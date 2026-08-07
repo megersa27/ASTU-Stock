@@ -1,0 +1,416 @@
+﻿🎯 Sprint 2 — Day 7
+Prototype & User Flow Testing
+So far you've gone through:
+Requirements
+     ↓
+User Research
+     ↓
+User Flow
+     ↓
+Wireframe
+     ↓
+Design System
+     ↓
+High-Fidelity UI
+     ↓
+       🟢 YOU ARE HERE
+     ↓
+Prototype
+     ↓
+User Testing
+Today we answer:
+"Can a user actually complete tasks using my design?"
+
+1. What is a Prototype?
+A prototype is an interactive version of your UI design.
+Instead of just looking at:
+Inventory
+[ + Add Item ]
+the user can actually click:
+Inventory
+      ↓
+[ + Add Item ]
+      ↓
+Add Inventory Item
+      ↓
+Fill form
+      ↓
+[ Save Item ]
+      ↓
+Inventory
+You're simulating how the real application will work.
+Important distinction
+Your Figma prototype is not the actual application.
+Figma Prototype
+      ↓
+Simulates interaction
+      ↓
+Helps test UX
+      ↓
+Then later...
+      ↓
+React + Backend
+      ↓
+Real application
+
+2. Why do we prototype before coding?
+Imagine you start coding the Inventory page.
+After two weeks, someone says:
+"The Add Item button should actually be on the other side."
+You now have to change:
+    • React components 
+    • CSS 
+    • routing 
+    • possibly backend interaction 
+    • tests 
+But if you discover the problem in Figma:
+Change design
+     ↓
+Few minutes
+That's why UX design can save development time.
+
+3. Today's Main User Flow
+We'll test one important scenario:
+Add a new inventory item
+The user should be able to:
+Dashboard
+    ↓
+Inventory
+    ↓
+Add Item
+    ↓
+Fill Form
+    ↓
+Save Item
+    ↓
+Success
+    ↓
+Inventory List
+This is your first prototype flow.
+
+4. Prepare your Figma screens
+You should already have:
+03 - High Fidelity UI
+
+01 - Login
+02 - Dashboard
+03 - Inventory
+04 - Add Inventory
+05 - Item Details
+06 - Stock In
+07 - Stock Out
+08 - Suppliers
+09 - Reports
+10 - Users
+11 - Settings
+We're going to connect them.
+
+5. Open Prototype Mode
+In Figma, look at the right side.
+You should see something similar to:
+Design
+Prototype
+Inspect
+Click:
+Prototype
+Now select the button you want to make interactive.
+For example:
+[ + Add Item ]
+
+6. Connect Add Item
+Select:
++ Add Item
+You'll see a small prototype connection handle.
+Drag it to:
+04 - Add Inventory
+Figma will create a connection.
+Set:
+Trigger:
+On click
+
+Action:
+Navigate to
+
+Destination:
+Add Inventory
+For animation, use something simple such as:
+Animation:
+Instant
+or:
+Smart Animate
+For now, Instant is perfectly fine.
+
+7. Connect Save Item
+Now go to:
+Add Inventory
+Select:
+[ Save Item ]
+Connect it to:
+Inventory
+Set:
+On click
+→ Navigate to
+→ Inventory
+Now your prototype has:
+Inventory
+     │
+     │ Click Add Item
+     ↓
+Add Inventory
+     │
+     │ Click Save
+     ↓
+Inventory
+🎉 You just created your first real prototype flow.
+
+8. Add Cancel
+Select:
+[ Cancel ]
+Connect it to:
+Inventory
+Now:
+Add Inventory
+     │
+     ├── Save → Inventory
+     │
+     └── Cancel → Inventory
+This is a simple example of alternative user paths.
+
+9. Connect Sidebar Navigation
+Now connect your sidebar.
+For example:
+Dashboard
+Inventory
+Stock Management
+Suppliers
+Reports
+Users
+Settings
+Dashboard
+Connect:
+Dashboard → Dashboard
+Inventory
+Inventory → Inventory
+Suppliers
+Suppliers → Suppliers
+etc.
+Now you can navigate around your application.
+
+10. Create the Login Flow
+Connect:
+Login
+  ↓
+[ Sign In ]
+  ↓
+Dashboard
+Select the Sign In button.
+Set:
+On click
+→ Navigate to
+→ Dashboard
+For your Figma prototype, you don't need actual authentication.
+Remember:
+Figma is simulating the experience.
+Real authentication will come later during development.
+
+11. Create a Delete Flow
+This is an important UX pattern.
+From:
+Inventory
+Click:
+⋮
+or:
+Delete
+Navigate to:
+Delete Confirmation Modal
+Your flow becomes:
+Inventory
+   ↓
+Delete
+   ↓
+┌──────────────────────────┐
+│ Delete Item?             │
+│                          │
+│ Are you sure?            │
+│                          │
+│ [Cancel]     [Delete]    │
+└──────────────────────────┘
+Then:
+Cancel → Inventory
+and:
+Delete → Inventory
+Later, when we develop the real application, Delete will actually communicate with the backend.
+
+12. Create Stock-In Flow
+Now create another important flow:
+Inventory
+     ↓
+Item Details
+     ↓
+Stock In
+     ↓
+Stock In Form
+     ↓
+Save
+     ↓
+Item Details
+This represents a real business process.
+
+13. Your complete prototype
+By the end, aim for something approximately like:
+                         LOGIN
+                           │
+                           ↓
+                       DASHBOARD
+                           │
+             ┌─────────────┼─────────────┐
+             ↓             ↓             ↓
+         INVENTORY      SUPPLIERS      REPORTS
+             │
+      ┌──────┼───────────────┐
+      ↓      ↓               ↓
+   ADD ITEM  DETAILS       DELETE
+      │      │               │
+      │      ├── Stock In    ↓
+      │      │            CONFIRM
+      │      │
+      ↓      ↓
+    SAVE    STOCK IN
+      │      │
+      └──→───┘
+You don't necessarily need every screen connected perfectly today.
+The important thing is that the main business flows work.
+
+🧪 14. Now comes the most important part: Testing
+Don't just click through it yourself.
+Pretend you're a new employee at ASTU who has never seen your system.
+Give yourself a task:
+"Add 50 Printer Papers to the inventory."
+Now try to complete it using only the prototype.
+Observe yourself.
+Ask:
+Question 1
+Can I immediately understand where to go?
+Dashboard → ?
+Question 2
+Can I easily find Inventory?
+Question 3
+Is Add Item obvious?
+Question 4
+Do I understand what information the form requires?
+Question 5
+After clicking Save, do I understand what happened?
+Question 6
+Can I easily cancel?
+
+📝 15. Create a UX Testing Checklist
+Create a simple document outside your project folder or inside your personal SDLC documentation.
+Name it:
+Sprint 2 - Day 7
+Prototype Testing Notes
+Use:
+Test
+Result
+Problem
+Improvement
+Login → Dashboard
+✅
+—
+—
+Dashboard → Inventory
+✅
+—
+—
+Inventory → Add Item
+✅
+—
+—
+Fill Item Form
+⚠️
+Required fields unclear
+Improve labels
+Save Item
+✅
+—
+—
+Cancel Item
+✅
+—
+—
+Delete Item
+⚠️
+Confirmation unclear
+Improve modal
+Don't worry if you find problems.
+Finding problems is the purpose of testing.
+
+🧠 16. This teaches you something important about SDLC
+Notice what we're doing:
+Design
+  ↓
+Prototype
+  ↓
+Test
+  ↓
+Find problem
+  ↓
+Improve design
+  ↓
+Prototype again
+This is much cheaper than:
+Code
+  ↓
+Test
+  ↓
+Find UX problem
+  ↓
+Rewrite code
+This is one reason modern software development doesn't mean:
+"Write all the code first."
+
+🤖 17. Use AI AFTER your own testing
+Since you've been using AI as a learning assistant, now you can ask AI to critique your design.
+For example, take screenshots of your prototype and ask:
+"Act as a senior UX designer. Review this ASTU Stock Management System prototype. Identify usability problems, unclear interactions, accessibility issues, unnecessary complexity, and improvements. Do not redesign it completely; explain the problems and why they matter."
+That's much better than asking:
+"Make my UI better."
+Because now you are making the design decisions.
+
+🏆 Sprint 2 is almost complete
+Your journey now looks like:
+SPRINT 2
+
+Day 1  → UX Design Brief             ✅
+Day 2  → User Flows                  ✅
+Day 3  → Information Architecture    ✅
+Day 4  → Wireframes                  ✅
+Day 5  → Design System               ✅
+Day 6  → High-Fidelity UI            ✅
+Day 7  → Prototype & Testing         🟢 TODAY
+🎯 Your Day 7 assignment
+Before we move to Sprint 3:
+Build and test these 3 flows yourself in Figma:
+1. Login
+   ↓
+   Dashboard
+   ↓
+   Inventory
+
+
+2. Inventory
+   ↓
+   Add Item
+   ↓
+   Save
+   ↓
+   Inventory
+
+
+3. Inventory
+   ↓
+   Item Details
+   ↓
+   Stock In
+   ↓
+   Save
+
