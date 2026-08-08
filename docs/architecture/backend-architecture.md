@@ -43,3 +43,31 @@ server/
 ├── utils/
 ├── server.js
 └── package.json
+
+## Authentication and Authorization
+
+The system will use authentication to verify the identity of users.
+
+After authentication, authorization will determine what actions a user
+is allowed to perform based on their assigned role.
+
+The expected flow is:
+
+```text
+User
+  ↓
+Login API
+  ↓
+Authentication
+  ↓
+Token / Session
+  ↓
+Protected Route
+  ↓
+Authentication Middleware
+  ↓
+Authorization Middleware
+  ↓
+Controller
+  ↓
+Response
