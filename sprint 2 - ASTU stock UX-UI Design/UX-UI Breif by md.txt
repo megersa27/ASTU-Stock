@@ -1,0 +1,525 @@
+﻿           Sprint 2 — Day 1: UX Design Brief
+
+             Project: ASTU Stock Management System
+
+                                 Day: 1 of 7
+                          Phase: UI-UX Design
+                               
+           Main deliverable: 01-UX-Design-Brief
+
+
+
+1. What are we doing today?
+In Sprint 1, we asked:
+What should the system do?
+Today we ask:
+Who will use it, what are they trying to accomplish, and what kind of experience should we provide?
+We are not designing screens yet.
+Today is about establishing the UX foundation before opening Figma.
+
+2. Why do we need a UX Design Brief?
+Imagine you open Figma immediately and start drawing:
+Dashboard
+   ↓
+Sidebar
+   ↓
+Cards
+   ↓
+Tables
+   ↓
+Buttons
+You might create something beautiful—but it may not solve the users' real problems.
+The UX brief gives us a design direction.
+It answers:
+    • Who are our users? 
+    • What are their goals? 
+    • What problems do they have? 
+    • What should the system make easier? 
+    • What principles should guide our design? 
+    • What does a successful user experience look like? 
+So the flow becomes:
+SRS
+ ↓
+UX Design Brief
+ ↓
+User Flows
+ ↓
+Information Architecture
+ ↓
+Wireframes
+ ↓
+UI Design
+
+3. Create the File
+For your personal SDLC workspace:
+ASTU-Stock-Management-Personal/
+│
+├── 01-Product-Planning/
+├── 02-Requirement-Analysis/
+├── 03-UI-UX-Design/
+│   └── 01-UX-Design-Brief.md
+├── 04-Software-Analysis-Design/
+├── 05-Development/
+├── 06-Testing/
+├── 07-Docker/
+└── 08-Deployment/
+Why create 03-UI-UX-Design?
+Because we're separating design artifacts from requirements and source code.
+It solves this problem:
+Everything mixed together ❌
+
+SRS
+React
+Figma
+Database
+Use Cases
+CSS
+Docker
+User Flow
+Instead:
+Product Planning
+     ↓
+Requirements
+     ↓
+UI/UX Design
+     ↓
+SAD
+     ↓
+Development
+     ↓
+Testing
+     ↓
+Deployment
+That makes your project much easier to understand and maintain.
+
+4. UX Design Brief
+Put the following into:
+03-UI-UX-Design/01-UX-Design-Brief.md
+
+ASTU Stock Management System
+UX Design Brief
+Version: 1.0
+Sprint: Sprint 2
+Day: Day 1
+Project Type: University Stock Management System
+
+1. UX Vision
+The ASTU Stock Management System should provide a simple, clear, efficient, and reliable experience for managing university stock.
+Users should be able to perform common inventory operations without unnecessary steps or confusion.
+The interface should help users understand:
+    • What stock is available. 
+    • What stock is low. 
+    • What stock has been received. 
+    • What stock has been issued. 
+    • Who performed a transaction. 
+    • What action they can perform next. 
+
+2. Target Users
+Based on our SRS, the main users are:
+User
+Main Goals
+Administrator
+Manage users, roles, and permissions
+Store Keeper
+Manage inventory and stock transactions
+Department Staff
+Request and receive stock
+Procurement Officer
+Manage supplier/procurement information
+Finance Officer
+Review relevant reports
+Management
+Monitor inventory and reports
+
+3. Primary User
+For the MVP, the Store Keeper is our primary user.
+Why?
+Because the core purpose of the system is stock management.
+The Store Keeper will frequently perform:
+Login
+ ↓
+View Dashboard
+ ↓
+Check Stock
+ ↓
+Receive Stock
+ ↓
+Issue Stock
+ ↓
+Check Stock History
+ ↓
+Generate/View Reports
+Therefore, we should optimize the main experience around this user.
+
+4. User Problems
+The system should address problems such as:
+Problem 1 — Manual records
+Stock information may be recorded using paper or disconnected files.
+Problem 2 — Difficult stock tracking
+It may be difficult to determine:
+"How much stock do we have right now?"
+Problem 3 — Low-stock visibility
+Users may not quickly know which items need attention.
+Problem 4 — Transaction tracking
+It can be difficult to determine:
+"Who received or issued this stock?"
+Problem 5 — Reporting
+Preparing stock reports manually can consume time.
+Problem 6 — Information accessibility
+Important stock information may not be available in one centralized place.
+
+5. UX Goals
+Goal 1 — Simplicity
+Common operations should be straightforward.
+For example:
+Receive Stock
+     ↓
+Select Item
+     ↓
+Enter Quantity
+     ↓
+Select Supplier
+     ↓
+Confirm
+
+Goal 2 — Efficiency
+Frequently performed tasks should require a reasonable number of steps.
+
+Goal 3 — Clarity
+Users should understand:
+    • What each button does. 
+    • What information is required. 
+    • Whether an action succeeded. 
+    • Whether an error occurred. 
+
+Goal 4 — Consistency
+Similar actions should behave similarly throughout the application.
+For example:
+Add Item
+Add Supplier
+Add Category
+should use consistent form patterns.
+
+Goal 5 — Error Prevention
+The UI should prevent common mistakes.
+For example:
+Available stock = 10
+
+User enters:
+Issue quantity = 20
+
+       ↓
+
+❌ Cannot issue 20 items.
+Only 10 items are available.
+
+Goal 6 — Feedback
+Users should receive immediate feedback.
+Example:
+✓ Stock received successfully.
+or:
+⚠ Quantity cannot exceed available stock.
+
+Goal 7 — Role Awareness
+Users should see functions relevant to their role.
+For example:
+Administrator
+├── Dashboard
+├── Users
+├── Roles
+└── Reports
+
+Store Keeper
+├── Dashboard
+├── Inventory
+├── Receive Stock
+├── Issue Stock
+├── Suppliers
+└── Reports
+
+6. Core User Tasks
+Our main UX design will support these tasks:
+Authentication
+    • Login 
+    • Logout 
+Inventory
+    • View inventory 
+    • Add item 
+    • Edit item 
+    • Search item 
+    • Filter item 
+    • View item details 
+Stock
+    • Receive stock 
+    • Issue stock 
+    • View stock history 
+Management
+    • Manage categories 
+    • Manage suppliers 
+    • Manage users 
+Reporting
+    • View inventory reports 
+    • View stock movement 
+    • View low-stock reports 
+
+7. UX Principles
+We'll use these principles when designing every screen.
+7.1 Visibility
+Important information should be easy to find.
+Example:
+LOW STOCK
+12 Items
+
+7.2 Consistency
+Use consistent:
+    • Buttons 
+    • Forms 
+    • Navigation 
+    • Tables 
+    • Icons 
+    • Colors 
+    • Spacing 
+
+7.3 Error Prevention
+Prevent problems before they happen.
+For example, don't wait until the backend rejects:
+quantity = -10
+The UI should prevent invalid input.
+
+7.4 Feedback
+Every important action should provide feedback.
+Save
+ ↓
+✓ Item added successfully.
+
+7.5 Recognition Over Recall
+Users should not have to remember information unnecessarily.
+Instead of asking:
+Enter category:
+[________________]
+where possible:
+Category:
+[ Office Supplies ▼ ]
+
+7.6 User Control
+Users should be able to cancel or safely recover from actions.
+Example:
+Add Item
+
+[Save] [Cancel]
+
+8. Accessibility Goals
+The system should be usable by as many people as reasonably possible.
+We should consider:
+    • Readable text. 
+    • Adequate contrast. 
+    • Clear labels. 
+    • Keyboard accessibility. 
+    • Visible focus states. 
+    • Meaningful error messages. 
+    • Avoiding color as the only indicator. 
+For example, don't communicate low stock only with:
+🔴
+Instead:
+🔴 Low Stock
+The text communicates the meaning as well.
+
+9. Responsive Design
+The application is primarily intended for desktop/laptop use in the university environment, but the interface should be designed so that important views can adapt to smaller screens where practical.
+We will consider:
+Desktop
+   ↓
+Tablet
+   ↓
+Mobile
+However, we should not unnecessarily make every complex data table identical on mobile. We will decide appropriate responsive behavior during UI design.
+
+10. Important UX Scenarios
+These scenarios will guide our design.
+Scenario 1 — Store Keeper checks stock
+Login
+ ↓
+Dashboard
+ ↓
+View stock summary
+ ↓
+Open Inventory
+ ↓
+Search item
+ ↓
+View quantity
+
+Scenario 2 — Store Keeper receives stock
+Login
+ ↓
+Dashboard
+ ↓
+Receive Stock
+ ↓
+Select Item
+ ↓
+Select Supplier
+ ↓
+Enter Quantity
+ ↓
+Confirm
+ ↓
+Stock Updated
+
+Scenario 3 — Store Keeper issues stock
+Login
+ ↓
+Dashboard
+ ↓
+Issue Stock
+ ↓
+Select Item
+ ↓
+Enter Quantity
+ ↓
+Select Department
+ ↓
+Confirm
+ ↓
+Stock Decreased
+
+Scenario 4 — Management checks stock
+Login
+ ↓
+Dashboard
+ ↓
+Reports
+ ↓
+Inventory Report
+ ↓
+Review Stock
+
+11. Design Success Criteria
+We will consider our UX successful if:
+    • Users can understand the navigation quickly. 
+    • Store Keepers can find inventory easily. 
+    • Stock receiving is straightforward. 
+    • Stock issuing is straightforward. 
+    • Important stock information is visible. 
+    • Errors are understandable. 
+    • Users receive feedback after actions. 
+    • Users can identify low-stock items easily. 
+    • Different roles see appropriate functionality. 
+    • The interface is consistent. 
+
+12. UX Scope for MVP
+Included
+    • Login 
+    • Dashboard 
+    • Inventory 
+    • Categories 
+    • Suppliers 
+    • Receive Stock 
+    • Issue Stock 
+    • Stock History 
+    • Reports 
+    • User Management 
+    • Role-based navigation 
+Not initially prioritized
+    • AI assistant 
+    • Advanced forecasting 
+    • Barcode scanning 
+    • Mobile application 
+    • Complex analytics 
+    • External ERP integration 
+These can be considered later.
+
+13. Design Principles Summary
+Our design should be:
+Simple
+  +
+Clear
+  +
+Consistent
+  +
+Efficient
+  +
+Safe
+  +
+Accessible
+  +
+Role-aware
+
+14. UX Decision
+For the MVP, we will prioritize the Store Keeper's workflow because inventory management is the central function of the system.
+Therefore, the most important flows to design first are:
+1. Login
+2. Dashboard
+3. View Inventory
+4. Add Inventory
+5. Receive Stock
+6. Issue Stock
+7. View Stock History
+8. Generate Report
+
+15. Relationship With SRS
+The UX design will be based on the requirements identified during Sprint 1.
+SRS
+ │
+ ├── FR-AUTH → Login UI
+ │
+ ├── FR-INV → Inventory UI
+ │
+ ├── FR-REC → Receive Stock UI
+ │
+ ├── FR-ISS → Issue Stock UI
+ │
+ ├── FR-TRACK → Stock History UI
+ │
+ └── FR-REPORT → Reports UI
+This ensures that we don't design features without requirements.
+
+16. Day 1 Deliverable
+At the end of Day 1:
+03-UI-UX-Design/
+│
+└── 01-UX-Design-Brief.md
+Purpose of this file
+It solves the problem of:
+"Let's just open Figma and start designing randomly."
+Instead, we now have a documented design direction.
+
+What Happens on Day 2?
+Tomorrow we take the most important user tasks and create User Flows.
+For example, we'll transform:
+"Store Keeper wants to receive stock."
+into a detailed flow:
+                 Login
+                   │
+                   ▼
+               Dashboard
+                   │
+                   ▼
+             Receive Stock
+                   │
+                   ▼
+              Select Item
+                   │
+                   ▼
+            Select Supplier
+                   │
+                   ▼
+             Enter Quantity
+                   │
+                   ▼
+             Validate Data
+                /       \
+              ❌         ✅
+              │           │
+          Show Error      ▼
+                      Confirmation
+                          │
+                          ▼
+                     Save Stock
+                          │
+                          ▼
+                    Update Quantity
+                          │
+                          ▼
+                    Success Message
+

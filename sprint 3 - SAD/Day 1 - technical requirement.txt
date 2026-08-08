@@ -1,0 +1,408 @@
+﻿🚀 Sprint 3 — Day 1: Technical Requirements
+Welcome to Sprint 3. 🎯
+Sprint 2 answered:
+“What should ASTU Stock Management System look like?”
+Now Sprint 3 starts answering:
+“What technical capabilities must we build to make that system work?”
+Today we will not code. We will convert your existing requirements into a technical blueprint.
+
+1. First, Understand the Difference
+You already have functional requirements from Sprint 1.
+Example:
+FR-01: The system shall allow authorized staff to add a new inventory item.
+Now we translate that into technical requirements.
+Functional Requirement
+User
+ ↓
+Add Inventory Item
+Technical Requirements
+Frontend
+ ↓
+Add Item Form
+ ↓
+POST /api/inventory
+ ↓
+Express Backend
+ ↓
+Validation
+ ↓
+MongoDB
+So:
+Functional requirement = What the system must do.
+Technical requirement = What technical capabilities are needed to make it happen.
+
+2. Why Do We Need Technical Requirements?
+Imagine you tell a developer:
+"Build an inventory system."
+They will immediately have questions:
+    • Which frontend?
+    • Which backend?
+    • Which database?
+    • How do users log in?
+    • Who can add inventory?
+    • How does frontend communicate with backend?
+    • What happens if the internet fails?
+    • How are passwords protected?
+    • How is the application deployed?
+    • How do we run it on another computer?
+Technical requirements remove that uncertainty before development begins.
+This is especially important because your advisor asked for:
+modern SDLC, Agile, Dockerizing, Git and GitHub
+So we need to turn those expectations into concrete technical requirements.
+
+3. Our ASTU Stock Management System Tech Stack
+For our personal project, we'll use:
+Layer
+Technology
+Purpose
+UI/UX
+Figma
+Design and visual specification
+Frontend
+React
+User interface
+Styling
+Tailwind CSS
+UI styling
+Backend
+Node.js + Express
+API and business logic
+Database
+MongoDB
+Store application data
+Authentication
+JWT
+Secure user authentication
+API style
+REST API
+Frontend ↔ Backend communication
+Version control
+Git
+Track code changes
+Collaboration
+GitHub
+Remote repository & teamwork
+Containerization
+Docker
+Consistent application environment
+Testing
+Jest/Vitest + API testing
+Verify application
+Deployment
+Docker-based deployment
+Run application in production
+Important: This is our proposed technical stack for the personal project. During the actual ASTU team project, your team may choose differently.
+
+4. Let's Convert Requirements into Technical Requirements
+Let's take a simple requirement.
+Requirement
+The Store Keeper can add an inventory item.
+We can break it down.
+Frontend Requirement
+The React application must provide an Add Item form containing:
+Item Name
+Item Code
+Category
+Supplier
+Quantity
+Minimum Stock Level
+Description
+[Save]
+Backend Requirement
+Express must provide:
+POST /api/inventory
+The backend must:
+    1. Receive the request.
+    2. Validate the data.
+    3. Check whether the item code already exists.
+    4. Create the item.
+    5. Save it to MongoDB.
+    6. Return an appropriate response.
+Database Requirement
+MongoDB must store something similar to:
+InventoryItem
+├── name
+├── itemCode
+├── category
+├── supplier
+├── quantity
+├── minimumStockLevel
+├── description
+├── createdAt
+└── updatedAt
+Security Requirement
+Only authorized users should be allowed to create inventory items.
+Now one simple sentence has become a real technical specification.
+
+5. The 8 Technical Requirement Categories
+For our project, we'll organize technical requirements into these categories:
+Technical Requirements
+│
+├── 1. Technology
+├── 2. Functional/Feature
+├── 3. Frontend
+├── 4. Backend/API
+├── 5. Database
+├── 6. Security
+├── 7. Performance & Reliability
+└── 8. Deployment & DevOps
+Let's understand each.
+
+6. Technology Requirements
+These answer:
+What technologies will we use?
+For example:
+Frontend: React
+Backend: Node.js + Express
+Database: MongoDB
+Version Control: Git + GitHub
+Containerization: Docker
+Problem Solved
+Without this, different developers might make different technology choices.
+For example:
+Developer A → React
+Developer B → Angular
+Developer C → Vue
+That would create unnecessary problems.
+
+7. Frontend Technical Requirements
+These answer:
+What must the React application be capable of doing?
+For example:
+TR-FE-01
+The frontend shall be developed using React.
+
+TR-FE-02
+The frontend shall implement the approved Figma design.
+
+TR-FE-03
+The frontend shall communicate with the backend through REST APIs.
+
+TR-FE-04
+The frontend shall provide form validation.
+
+TR-FE-05
+The frontend shall display appropriate loading and error states.
+
+TR-FE-06
+The frontend shall provide responsive layouts.
+Notice something important:
+Your Figma Design System from Sprint 2 now becomes an input into these requirements.
+
+8. Backend Technical Requirements
+Example:
+TR-BE-01
+The backend shall be developed using Node.js and Express.
+
+TR-BE-02
+The backend shall expose RESTful API endpoints.
+
+TR-BE-03
+The backend shall validate incoming data.
+
+TR-BE-04
+The backend shall implement centralized error handling.
+
+TR-BE-05
+The backend shall implement authentication and authorization.
+
+TR-BE-06
+The backend shall communicate with MongoDB.
+
+9. Database Requirements
+For example:
+TR-DB-01
+The system shall use MongoDB.
+
+TR-DB-02
+Inventory records shall have unique item codes.
+
+TR-DB-03
+User passwords shall never be stored as plain text.
+
+TR-DB-04
+Inventory transactions shall maintain timestamps.
+
+TR-DB-05
+The database structure shall support inventory,
+suppliers, users and stock transactions.
+We'll design the actual database in Sprint 3 Day 5.
+So don't worry if the database design isn't clear yet.
+
+10. Security Requirements
+This is extremely important for a stock management system.
+We don't want:
+Anyone
+   ↓
+/api/inventory
+   ↓
+Delete everything 😨
+Instead:
+User
+ ↓
+Login
+ ↓
+Authentication
+ ↓
+Authorization
+ ↓
+Permission check
+ ↓
+API
+Examples:
+TR-SEC-01
+Users shall authenticate before accessing protected resources.
+
+TR-SEC-02
+Passwords shall be securely hashed.
+
+TR-SEC-03
+Protected API endpoints shall require authentication.
+
+TR-SEC-04
+The system shall enforce role-based access control.
+
+TR-SEC-05
+Sensitive configuration values shall be stored using environment variables.
+We'll study authentication and authorization more deeply on Day 7.
+
+11. Performance & Reliability
+We also need to think beyond:
+"Does it work?"
+We need:
+"Does it continue working well?"
+For example:
+TR-PERF-01
+The system should provide reasonable response times
+for normal inventory operations.
+
+TR-PERF-02
+The system shall display loading states while
+waiting for API responses.
+
+TR-REL-01
+The backend shall return meaningful error responses.
+
+TR-REL-02
+The application shall handle failed API requests
+without crashing the frontend.
+Don't worry about exact performance numbers yet. We can define appropriate measurable targets later if the project needs them.
+
+12. Deployment & DevOps Requirements
+This directly connects to what your advisor told you.
+The application should eventually be:
+GitHub
+   ↓
+Docker
+   ↓
+Build
+   ↓
+Deploy
+   ↓
+Production
+Technical requirements:
+TR-DEV-01
+The project shall use Git for version control.
+
+TR-DEV-02
+The source code shall be hosted on GitHub.
+
+TR-DEV-03
+The application shall provide Docker configuration.
+
+TR-DEV-04
+Development and production configuration
+shall be separated appropriately.
+
+TR-DEV-05
+Sensitive credentials shall not be committed
+to GitHub.
+
+13. One Very Important Concept: Non-Functional Requirements
+You'll hear this term frequently in software engineering.
+There are two major types:
+Functional
+What does the system do?
+Examples:
+Add inventory
+Update inventory
+Delete inventory
+Receive stock
+Issue stock
+Generate reports
+Login
+Non-Functional
+How well or under what constraints does it work?
+Examples:
+Security
+Performance
+Reliability
+Usability
+Scalability
+Maintainability
+Availability
+Think:
+Functional
+     ↓
+WHAT?
+
+Non-functional
+     ↓
+HOW WELL?
+
+14. Your First Technical Requirements Document
+For your personal project, create:
+docs/
+└── technical-requirements.md
+Why This File?
+Because we need one central place that tells us:
+"What technical capabilities are we committing to build?"
+Without it, technical decisions become scattered throughout your code and your memory.
+
+Suggested Document Structure
+# ASTU Stock Management System
+# Technical Requirements
+
+## 1. Introduction
+
+## 2. Technology Stack
+
+## 3. Frontend Requirements
+
+## 4. Backend Requirements
+
+## 5. Database Requirements
+
+## 6. API Requirements
+
+## 7. Authentication & Security
+
+## 8. Performance & Reliability
+
+## 9. Git & GitHub Requirements
+
+## 10. Docker & Deployment Requirements
+
+## 11. Development Environment
+
+## 12. Technical Constraints
+We will gradually fill this document during Sprint 3.
+
+📝 Today's Deliverable
+At the end of Sprint 3 — Day 1, you should understand:
+Functional Requirement
+        ↓
+Technical Requirement
+        ↓
+Frontend
+        ↓
+Backend
+        ↓
+Database
+        ↓
+Security
+And create:
+docs/
+└── technical-requirements.md
+Don't start coding it yet. We'll use the document as the foundation for Days 2–10.
+

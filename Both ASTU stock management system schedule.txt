@@ -1,0 +1,636 @@
+﻿Roadmap 1 – Personal Project (Learn the Entire SDLC)
+Project Name: ASTU Stock Management System (Personal Edition)
+Goal: Learn the complete Software Development Life Cycle (SDLC) from idea to deployment.
+Sprint
+Phase
+Duration
+Main Activities
+Deliverables
+Skills
+Tools
+Status
+
+Sprint 0
+Product Planning
+3 Days
+Vision, Goals, Stakeholders, Roadmap
+Project Charter, Product Vision, MVP
+Product Management
+Notion, Word
+✅ Completed
+August1started
+
+Sprint 1
+Requirement Analysis
+5 Days
+Functional & Non-functional Requirements, User Stories
+SRS Document
+Business Analysis
+Word, Notion
+✅ Completed
+
+Sprint 2
+UI/UX Design
+4 Days
+User Flow, Wireframes, Prototype, Design System
+Figma Design
+UI/UX
+Figma
+✅ Completed
+
+Sprint 3
+Software Analysis & Architecture (SAD)
+5 Days
+UML, ERD, Database, API Design
+SAD Document
+System Design
+Draw.io
+⏳
+
+Sprint 4
+Environment Setup
+2 Days
+Git, GitHub, Docker, VS Code, Folder Structure
+Ready Development Environment
+Git & Dev Setup
+Git, VS Code, Docker
+⏳
+
+Sprint 5
+Backend Development
+8 Days
+Express, MongoDB, JWT, CRUD APIs
+Backend API
+Backend Development
+Express, MongoDB
+⏳
+
+Sprint 6
+Frontend Development
+8 Days
+React, Routing, Dashboard, Forms
+React Frontend
+Frontend Development
+React
+⏳
+
+Sprint 7
+Integration
+4 Days
+Connect Frontend & Backend
+Complete Web Application
+API Integration
+Axios, Thunder Client
+⏳
+
+Sprint 8
+Testing & QA
+4 Days
+Functional Testing, Validation, Bug Fixes
+Tested System
+Testing
+Thunder Client, Postman
+⏳
+
+Sprint 9
+Dockerization
+3 Days
+Dockerfile, Docker Compose
+Containerized Application
+Docker
+Docker
+⏳
+
+Sprint 10
+Deployment
+2 Days
+Deploy Frontend & Backend
+Live System
+DevOps
+Vercel, Render, Atlas
+⏳
+
+Sprint 11
+Documentation
+3 Days
+README, API Docs, User Guide
+Complete Documentation
+Technical Writing
+Markdown, Word
+⏳
+
+Sprint 12
+Maintenance
+Continuous
+Bug Fixes, Improvements
+Version 1.x
+Software Maintenance
+GitHub Issues
+⏳
+
+
+Roadmap 2 – Internship Team Project (Learn Professional Collaboration)
+Project Name: ASTU Stock Management System (Team Edition)
+Your Role: Backend Developer
+Goal: Learn Agile teamwork, Git/GitHub collaboration, and professional backend development.
+Sprint
+Team Phase
+Duration
+Your Responsibilities
+Team Deliverables
+Skills
+Tools
+Status
+Sprint 0
+Team Formation
+1 Day
+Join team, understand project
+Team Roles
+Communication
+Telegram, GitHub
+✅  Completed
+Sprint 1
+Agile Planning
+2 Days
+Attend planning meetings, estimate backend tasks
+Sprint Backlog
+Agile
+GitHub Projects
+✅  Completed
+Sprint 2
+Git Workflow Setup
+2 Days
+Clone repo, create branches, understand workflow
+Working Repository
+Git Collaboration
+Git, GitHub
+⏳
+Sprint 3
+Backend Design Review
+2 Days
+Review APIs, database models
+Backend Design
+API Design
+Draw.io
+⏳
+Sprint 4
+Backend Development
+10 Days
+Develop assigned APIs and business logic
+REST API
+Express, MongoDB
+VS Code
+⏳
+Sprint 5
+Frontend Integration
+5 Days
+Support frontend team, fix API issues
+Integrated System
+Collaboration
+Axios, Thunder Client
+⏳
+Sprint 6
+Code Review & Merge
+Continuous
+Review code, create PRs, resolve conflicts
+Clean Codebase
+GitHub Collaboration
+GitHub
+🔄
+Sprint 7
+Testing
+4 Days
+Test APIs and fix bugs
+Stable Backend
+API Testing
+Thunder Client
+⏳
+Sprint 8
+Dockerization
+2 Days
+Containerize backend
+Dockerized Backend
+Docker
+Docker
+⏳
+Sprint 9
+Deployment
+2 Days
+Deploy backend services
+Live Backend
+Deployment
+Render
+⏳
+Sprint 10
+Maintenance
+Continuous
+Bug fixes and enhancements
+Updated Backend
+Professional Development
+GitHub Issues
+🔄
+
+📅 Sprint 3 Schedule
+Day
+Topic
+Main Deliverable
+Day 1
+Technical Requirements
+Technical requirements document
+Day 2
+System Architecture
+High-level architecture
+Day 3
+Frontend Architecture
+React architecture & folder structure
+Day 4
+Backend Architecture
+Node/Express architecture
+Day 5
+Database Design
+ERD + MongoDB collections
+Day 6
+API Design
+API endpoint specification
+Day 7
+Authentication & Authorization
+Roles + permissions + auth flow
+Day 8
+Git & GitHub Strategy
+Branching + collaboration workflow
+Day 9
+Docker Architecture
+Container architecture
+Day 10
+Developer Handoff
+Complete technical specification
+
+
+📚 Stock Management Manual (Summary)
+Purpose of the Manual
+This manual explains how government organizations in Ethiopia should manage stock (inventory).
+Your software's job is to digitize these manual processes.
+Think like this:
+Manual (Paper Forms)
+        ↓
+Your Software
+        ↓
+Digital System
+
+Chapter 1 — Introduction
+What it teaches
+This chapter answers:
+What is stock management?
+It defines terms like:
+    • Stock 
+    • Inventory 
+    • Store 
+    • Warehouse 
+    • Property 
+    • Supplier 
+    • Receiving 
+    • Issuing 
+It also explains why organizations keep stock.
+Example:
+ASTU stores:
+    • Computers 
+    • Chairs 
+    • Projectors 
+    • Laboratory equipment 
+    • Printer paper 
+Without stock management:
+❌ Items disappear
+❌ Nobody knows quantities
+❌ Money is wasted
+
+Software Features From Chapter 1
+Your system should include:
+    • Dashboard 
+    • Total stock 
+    • Categories 
+    • Current quantity 
+    • Store information 
+
+Chapter 2 — Stock Identification
+What it teaches
+Every item should have a unique identity.
+Example:
+Chair
+is not enough.
+Instead:
+CHR-0001
+Computer
+PC-0005
+Printer
+PRN-0012
+Items are also grouped into categories.
+Example:
+Furniture
+
+• Chair
+• Table
+
+Electronics
+
+• Laptop
+• Printer
+
+Office Supplies
+
+• Paper
+• Pen
+
+Software Features
+Create:
+    • Categories 
+    • Item Code 
+    • Barcode (optional later) 
+    • Search by Code 
+
+Chapter 3 — Receiving & Inspection
+This chapter explains what happens when ASTU buys new items.
+Example:
+ASTU buys
+20 Computers.
+Before storing them:
+    • Count them 
+    • Inspect them 
+    • Confirm quality 
+    • Record supplier 
+    • Record purchase date 
+Then save them into inventory.
+
+Software Features
+Receive Stock
+Fields:
+Supplier
+
+Item
+
+Quantity
+
+Purchase Date
+
+Condition
+
+Received By
+
+Chapter 4 — Issue of Stock
+Receiving is:
+Outside
+↓
+Store
+Issuing is the opposite.
+Store
+↓
+Department
+Example:
+Computer Science Department requests:
+5 Chairs
+Store issues them.
+Inventory becomes:
+Before
+100 Chairs
+↓
+Issue 5
+↓
+95 Chairs
+
+Software Features
+Issue Stock
+Fields:
+Department
+
+Item
+
+Quantity
+
+Issued By
+
+Issued To
+
+Date
+Automatically reduce quantity.
+
+Chapter 5 — Records & Reporting
+Everything must be recorded.
+Example:
+Today
+Received
+10 Laptops
+Tomorrow
+Issued
+2 Laptops
+Current quantity
+8
+Reports answer questions like:
+    • Which items are low? 
+    • Which department received what? 
+    • Monthly usage? 
+    • Total inventory value? 
+
+Software Features
+Reports
+Inventory Report
+Stock Movement
+Supplier Report
+Issue History
+Dashboard Statistics
+
+Chapter 6 — Stock Taking & Stock Control
+This chapter is very important.
+Sometimes the computer says:
+20 Computers
+But when staff count:
+18 Computers
+Where did 2 go?
+This is called:
+Stock Taking
+It compares:
+Computer Record
+VS
+Physical Count
+
+The manual also teaches:
+    • Reorder level 
+    • Minimum stock 
+    • Maximum stock 
+Example
+Minimum
+10
+Current
+8
+↓
+Software says
+⚠ Low Stock
+
+Software Features
+Low Stock Alert
+Inventory Audit
+Stock Adjustment
+Stock History
+
+Chapter 7 — Storage
+This chapter is about:
+How to store items safely.
+Examples:
+Food
+↓
+Dry room
+Computers
+↓
+Locked room
+Chemicals
+↓
+Separate room
+It also discusses:
+    • Security 
+    • Fire safety 
+    • Shelves 
+    • Warehouse arrangement 
+
+Software Features
+Store/Warehouse Management
+Warehouse
+Shelf
+Room
+Location
+Example
+Building A
+
+↓
+
+Store Room
+
+↓
+
+Shelf B
+
+↓
+
+Laptop
+
+If We Convert the Whole Manual Into Software
+Login
+
+↓
+
+Dashboard
+
+↓
+
+Categories
+
+↓
+
+Suppliers
+
+↓
+
+Receive Stock
+
+↓
+
+Issue Stock
+
+↓
+
+Departments
+
+↓
+
+Inventory
+
+↓
+
+Stock Taking
+
+↓
+
+Reports
+
+↓
+
+Users
+
+↓
+
+Settings
+
+Database Tables You May Need
+Users
+
+Items
+
+Categories
+
+Suppliers
+
+Departments
+
+Receivings
+
+Issues
+
+Inventory
+
+StockTaking
+
+Warehouses
+
+Locations
+
+Reports
+
+Features by Priority
+Phase 1 (MVP)
+    • Login 
+    • Dashboard 
+    • Categories 
+    • Items 
+    • Receive Stock 
+    • Issue Stock 
+    • Search 
+    • Reports 
+
+Phase 2
+    • Suppliers 
+    • Departments 
+    • Warehouse 
+    • User Roles 
+    • Inventory History 
+
+Phase 3
+    • Barcode Scanner 
+    • QR Code 
+    • Email Notifications 
+    • Low Stock Alerts 
+    • Charts 
+    • Analytics 
+
+What You Should Learn From Each Chapter
+Chapter
+Main Idea
+Software Module
+1. Introduction
+Understand inventory management
+Dashboard & Overview
+2. Stock Identification
+Give every item a unique identity
+Items & Categories
+3. Receiving & Inspection
+Record new stock entering the store
+Receive Stock
+4. Issue of Stock
+Record stock leaving the store
+Issue Stock
+5. Records & Reporting
+Keep complete transaction history
+Reports & Dashboard
+6. Stock Taking & Control
+Compare physical stock with records and control inventory
+Inventory Audit & Low Stock Alerts
+7. Storage
+Organize warehouses and storage locations
+Warehouse & Location Management
+

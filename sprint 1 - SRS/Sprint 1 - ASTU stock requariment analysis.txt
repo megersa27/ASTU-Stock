@@ -1,0 +1,992 @@
+﻿
+ 
+ASTU STOCK MANAGEMENT SYSTEM
+  Software Requirements Specification (SRS)
+
+    Project: ASTU Stock Management System
+Document: Software Requirements Specification
+
+      Sprint: Sprint 1 – Requirement Analysis
+
+                       Version: 1.0
+                       Year: 2026
+
+
+
+
+
+
+
+
+Table of Contents
+    1. Introduction 
+    2. Overall Description 
+    3. Functional Requirements 
+    4. Non-Functional Requirements 
+    5. User Stories 
+    6. Use Cases 
+    7. Business Rules 
+    8. Data Requirements 
+    9. External Interface Requirements 
+    10. Acceptance Criteria 
+    11. Product Backlog 
+    12. Requirement Prioritization 
+    13. Requirement Traceability 
+    14. SRS Review and Approval 
+
+1. Introduction
+1.1 Purpose
+This Software Requirements Specification defines the requirements of the ASTU Stock Management System.
+The document describes what the system should do, who will use it, the system's functional and non-functional requirements, business rules, data requirements, user stories, use cases, and acceptance criteria.
+This document will serve as a reference for the following project phases:
+SRS
+ ↓
+UI/UX Design
+ ↓
+Software Analysis & Design
+ ↓
+Development
+ ↓
+Testing
+ ↓
+Deployment
+
+1.2 Project Overview
+The ASTU Stock Management System is a web-based application designed to help Adama Science and Technology University manage inventory digitally.
+The system will replace or reduce manual stock management processes and provide a centralized platform for recording, monitoring, issuing, receiving, and reporting inventory.
+
+1.3 Scope
+The first version of the system will include:
+    • Authentication 
+    • User management 
+    • Role-based access 
+    • Dashboard 
+    • Inventory management 
+    • Category management 
+    • Supplier management 
+    • Stock receiving 
+    • Stock issuing 
+    • Stock tracking 
+    • Search and filtering 
+    • Reports 
+
+1.4 Intended Audience
+This document is intended for:
+    • Project supervisor 
+    • Project manager 
+    • Backend developers 
+    • Frontend developers 
+    • UI/UX designers 
+    • Software testers 
+    • System administrators 
+    • Future maintenance developers 
+    • University stakeholders 
+
+1.5 Definitions and Acronyms
+Term
+Definition
+SRS
+Software Requirements Specification
+SDLC
+Software Development Life Cycle
+MVP
+Minimum Viable Product
+UI
+User Interface
+UX
+User Experience
+API
+Application Programming Interface
+CRUD
+Create, Read, Update, Delete
+RBAC
+Role-Based Access Control
+SAD
+Software Analysis and Design
+FR
+Functional Requirement
+NFR
+Non-Functional Requirement
+
+2. Overall Description
+2.1 Product Perspective
+The system will be a web-based client-server application.
+The general architecture will be:
+                    USER
+                      │
+                      ▼
+              ┌──────────────┐
+              │   Frontend   │
+              │    React     │
+              └──────┬───────┘
+                     │
+                  REST API
+                     │
+                     ▼
+              ┌──────────────┐
+              │   Backend    │
+              │Node + Express│
+              └──────┬───────┘
+                     │
+                     ▼
+              ┌──────────────┐
+              │   Database   │
+              │   MongoDB    │
+              └──────────────┘
+Detailed architecture will be designed during the SAD phase.
+
+2.2 Main Product Functions
+The system will provide the following major functions:
+    1. User authentication 
+    2. User and role management 
+    3. Inventory management 
+    4. Category management 
+    5. Supplier management 
+    6. Stock receiving 
+    7. Stock issuing 
+    8. Stock tracking 
+    9. Search and filtering 
+    10. Dashboard 
+    11. Reporting 
+
+2.3 User Classes
+2.3.1 System Administrator
+The administrator manages:
+    • Users 
+    • Roles 
+    • Permissions 
+    • System configuration 
+
+2.3.2 Store Keeper
+The Store Keeper manages:
+    • Inventory 
+    • Stock receiving 
+    • Stock issuing 
+    • Stock levels 
+    • Stock movement 
+
+2.3.3 Department Staff
+Department staff may:
+    • Request stock 
+    • View request status 
+    • Receive approved items 
+
+2.3.4 Procurement Officer
+The Procurement Officer manages procurement-related information and supplier information.
+
+2.3.5 Finance Officer
+The Finance Officer can review inventory and relevant financial reports.
+
+2.3.6 University Management
+Management can view high-level reports and inventory information to support decision-making.
+
+2.4 Operating Environment
+Frontend
+    • React 
+    • Modern web browser 
+    • HTML 
+    • CSS 
+    • JavaScript 
+Backend
+    • Node.js 
+    • Express.js 
+Database
+    • MongoDB 
+Development
+    • VS Code 
+    • Git 
+    • GitHub 
+Deployment
+    • Docker 
+    • Cloud hosting 
+    • MongoDB Atlas 
+
+2.5 Constraints
+The project may be affected by:
+    • Limited development time. 
+    • Limited resources. 
+    • Changing requirements. 
+    • Team experience. 
+    • Internet availability. 
+    • University infrastructure. 
+
+2.6 Assumptions
+The project assumes:
+    • Authorized users have access to the system. 
+    • Users will receive basic training. 
+    • Inventory data will be entered accurately. 
+    • The required infrastructure will be available. 
+    • Users have access to a web browser. 
+
+2.7 Dependencies
+The system depends on:
+    • Internet/network availability. 
+    • Database availability. 
+    • Hosting infrastructure. 
+    • Server availability. 
+    • Required development technologies. 
+
+3. Functional Requirements
+Functional requirements describe what the system must do.
+Each requirement has a unique ID so that it can later be connected to design, code, and testing.
+
+3.1 Authentication Requirements
+FR-AUTH-001
+The system shall allow registered users to log in using valid credentials.
+FR-AUTH-002
+The system shall reject invalid login credentials.
+FR-AUTH-003
+The system shall allow authenticated users to log out.
+FR-AUTH-004
+The system shall prevent unauthenticated users from accessing protected pages.
+FR-AUTH-005
+The system shall provide role-based access to protected functionality.
+FR-AUTH-006
+The system shall securely store user passwords.
+
+3.2 User Management
+FR-USER-001
+The Administrator shall be able to create a user account.
+FR-USER-002
+The Administrator shall be able to view registered users.
+FR-USER-003
+The Administrator shall be able to update user information.
+FR-USER-004
+The Administrator shall be able to deactivate a user.
+FR-USER-005
+The Administrator shall be able to assign a role to a user.
+FR-USER-006
+The system shall prevent unauthorized users from managing users.
+
+3.3 Dashboard
+FR-DASH-001
+The system shall display the total number of inventory items.
+FR-DASH-002
+The system shall display available stock information.
+FR-DASH-003
+The system shall display low-stock items.
+FR-DASH-004
+The system shall display recent stock transactions.
+FR-DASH-005
+The system shall provide summarized inventory information according to the user's permissions.
+
+3.4 Inventory Management
+FR-INV-001
+Authorized users shall be able to add a new inventory item.
+FR-INV-002
+Authorized users shall be able to view inventory items.
+FR-INV-003
+Authorized users shall be able to update inventory information.
+FR-INV-004
+Authorized users shall be able to remove an inventory item when permitted.
+FR-INV-005
+The system shall assign a unique identifier to each inventory item.
+FR-INV-006
+The system shall store the item's name.
+FR-INV-007
+The system shall store the item's category.
+FR-INV-008
+The system shall store the item's quantity.
+FR-INV-009
+The system shall store the item's unit.
+FR-INV-010
+The system shall store the minimum stock level.
+FR-INV-011
+The system shall allow users to search inventory items.
+FR-INV-012
+The system shall allow users to filter inventory items.
+
+3.5 Category Management
+FR-CAT-001
+Authorized users shall be able to create categories.
+FR-CAT-002
+Authorized users shall be able to view categories.
+FR-CAT-003
+Authorized users shall be able to update categories.
+FR-CAT-004
+Authorized users shall be able to delete categories when permitted.
+FR-CAT-005
+The system shall prevent duplicate category names where uniqueness is required.
+
+3.6 Supplier Management
+FR-SUP-001
+Authorized users shall be able to register suppliers.
+FR-SUP-002
+Users shall be able to view supplier information.
+FR-SUP-003
+Authorized users shall be able to update supplier information.
+FR-SUP-004
+Authorized users shall be able to remove suppliers when permitted.
+FR-SUP-005
+The system shall store supplier contact information.
+
+3.7 Stock Receiving
+FR-REC-001
+Authorized users shall be able to record received stock.
+FR-REC-002
+The system shall record the received item.
+FR-REC-003
+The system shall record the received quantity.
+FR-REC-004
+The system shall record the supplier.
+FR-REC-005
+The system shall record the receiving date.
+FR-REC-006
+The system shall increase available inventory when stock is successfully received.
+FR-REC-007
+The system shall maintain a record of stock receiving transactions.
+
+3.8 Stock Issuing
+FR-ISS-001
+Authorized users shall be able to issue stock.
+FR-ISS-002
+The system shall record the issued item.
+FR-ISS-003
+The system shall record the issued quantity.
+FR-ISS-004
+The system shall record the requesting department.
+FR-ISS-005
+The system shall record the recipient.
+FR-ISS-006
+The system shall record the issue date.
+FR-ISS-007
+The system shall decrease available stock after a successful issue.
+FR-ISS-008
+The system shall prevent users from issuing more stock than is available.
+FR-ISS-009
+The system shall maintain a record of stock issuing transactions.
+
+3.9 Stock Tracking
+FR-TRACK-001
+The system shall maintain stock movement history.
+FR-TRACK-002
+Users with appropriate permissions shall be able to view stock movement.
+FR-TRACK-003
+The system shall identify whether a transaction represents receiving or issuing.
+FR-TRACK-004
+The system shall record the user responsible for a transaction.
+
+3.10 Search and Filtering
+FR-SEARCH-001
+The system shall allow users to search inventory by name.
+FR-SEARCH-002
+The system shall allow filtering by category.
+FR-SEARCH-003
+The system shall allow filtering by stock status.
+FR-SEARCH-004
+The system shall display an appropriate message when no results are found.
+
+3.11 Reporting
+FR-REPORT-001
+The system shall generate inventory reports.
+FR-REPORT-002
+The system shall generate stock receiving reports.
+FR-REPORT-003
+The system shall generate stock issuing reports.
+FR-REPORT-004
+The system shall generate stock movement reports.
+FR-REPORT-005
+The system shall provide low-stock reports.
+FR-REPORT-006
+The system shall restrict reports according to user permissions.
+
+4. Non-Functional Requirements
+Non-functional requirements describe how well the system should operate.
+
+4.1 Security
+NFR-SEC-001
+The system shall require authentication for protected functionality.
+NFR-SEC-002
+The system shall implement role-based access control.
+NFR-SEC-003
+Passwords shall not be stored as plain text.
+NFR-SEC-004
+The system shall validate user input.
+NFR-SEC-005
+The system shall prevent unauthorized access to protected resources.
+
+4.2 Performance
+NFR-PERF-001
+The system should provide responsive interactions under normal usage.
+NFR-PERF-002
+Database queries should be optimized to avoid unnecessary delays.
+NFR-PERF-003
+The API should return responses within an acceptable time under normal system load.
+
+4.3 Usability
+NFR-USE-001
+The system shall provide clear navigation.
+NFR-USE-002
+The interface shall use consistent design patterns.
+NFR-USE-003
+Error messages shall be understandable to users.
+NFR-USE-004
+Common tasks should require minimal steps.
+
+4.4 Reliability
+NFR-REL-001
+The system shall handle errors without crashing.
+NFR-REL-002
+The system shall maintain data consistency during stock transactions.
+NFR-REL-003
+The system should provide appropriate feedback after important operations.
+
+4.5 Availability
+NFR-AVL-001
+The deployed system should be available to authorized users whenever the hosting environment is operational.
+
+4.6 Scalability
+NFR-SCAL-001
+The architecture should allow additional users and inventory records to be supported as usage increases.
+NFR-SCAL-002
+The system should allow additional features to be added without requiring a complete redesign.
+
+4.7 Maintainability
+NFR-MAIN-001
+The codebase shall use a modular structure.
+NFR-MAIN-002
+The project shall use Git for version control.
+NFR-MAIN-003
+The project shall use GitHub for source-code collaboration and management.
+NFR-MAIN-004
+The project shall maintain appropriate technical documentation.
+
+4.8 Portability
+NFR-PORT-001
+The system should be deployable in different environments using Docker containers.
+
+5. User Stories
+User stories describe requirements from the user's perspective.
+The basic format is:
+As a [user], I want [function], so that [benefit].
+
+Authentication
+US-001
+As a user, I want to log in so that I can securely access the system.
+US-002
+As a user, I want to log out so that my account is protected when I finish using the system.
+
+User Management
+US-003
+As an Administrator, I want to create users so that authorized employees can access the system.
+US-004
+As an Administrator, I want to assign roles so that users only access permitted functionality.
+
+Inventory
+US-005
+As a Store Keeper, I want to add inventory items so that I can maintain accurate stock records.
+US-006
+As a Store Keeper, I want to edit inventory information so that incorrect information can be corrected.
+US-007
+As a Store Keeper, I want to search inventory so that I can quickly find an item.
+
+Receiving
+US-008
+As a Store Keeper, I want to record received stock so that inventory quantities remain accurate.
+
+Issuing
+US-009
+As a Store Keeper, I want to issue stock to departments so that stock distribution is recorded.
+US-010
+As a Store Keeper, I want the system to prevent issuing unavailable stock so that inventory remains accurate.
+
+Reports
+US-011
+As a Manager, I want to view inventory reports so that I can monitor stock levels.
+US-012
+As a Finance Officer, I want to view relevant inventory reports so that I can support financial monitoring.
+
+6. Use Cases
+6.1 Use Case List
+ID
+Use Case
+Actor
+UC-001
+Login
+All users
+UC-002
+Logout
+All users
+UC-003
+Manage Users
+Administrator
+UC-004
+Manage Roles
+Administrator
+UC-005
+Manage Inventory
+Store Keeper
+UC-006
+Manage Categories
+Store Keeper
+UC-007
+Manage Suppliers
+Store Keeper
+UC-008
+Receive Stock
+Store Keeper
+UC-009
+Issue Stock
+Store Keeper
+UC-010
+Track Stock
+Store Keeper
+UC-011
+Search Inventory
+Authorized users
+UC-012
+Generate Reports
+Authorized users
+UC-013
+View Dashboard
+Authorized users
+
+6.2 Use Case: Login
+ID: UC-001
+Actor: All users
+Precondition: User has a registered account.
+Main Flow:
+    1. User opens login page. 
+    2. User enters email/username. 
+    3. User enters password. 
+    4. User submits the form. 
+    5. System validates credentials. 
+    6. System authenticates the user. 
+    7. System redirects the user to the appropriate dashboard. 
+Alternative Flow:
+If credentials are incorrect:
+    1. System rejects login. 
+    2. System displays an error message. 
+    3. User can try again. 
+Postcondition:
+The authenticated user receives access according to their role.
+
+6.3 Use Case: Add Inventory
+ID: UC-005
+Actor: Store Keeper
+Precondition: User is authenticated and authorized.
+Main Flow:
+    1. User opens Inventory. 
+    2. User selects Add Item. 
+    3. User enters item information. 
+    4. System validates the information. 
+    5. System checks required fields. 
+    6. System saves the item. 
+    7. System displays a success message. 
+Alternative Flow:
+If required information is missing:
+    • System displays validation errors. 
+    • Item is not saved. 
+
+6.4 Use Case: Receive Stock
+ID: UC-008
+Actor: Store Keeper
+Main Flow:
+    1. User opens stock receiving. 
+    2. User selects inventory item. 
+    3. User enters quantity. 
+    4. User selects supplier. 
+    5. User submits the transaction. 
+    6. System validates the transaction. 
+    7. System increases stock quantity. 
+    8. System records the transaction. 
+
+6.5 Use Case: Issue Stock
+ID: UC-009
+Actor: Store Keeper
+Main Flow:
+    1. User opens stock issuing. 
+    2. User selects an item. 
+    3. User enters quantity. 
+    4. User enters requesting department. 
+    5. User enters recipient information. 
+    6. System checks available quantity. 
+    7. System decreases inventory. 
+    8. System records the transaction. 
+Alternative Flow:
+If requested quantity is greater than available stock:
+System rejects the transaction and displays an insufficient-stock message.
+
+6.6 Use Case: Generate Report
+ID: UC-012
+Actor: Authorized User
+Main Flow:
+    1. User opens Reports. 
+    2. User selects report type. 
+    3. User selects optional filters. 
+    4. System retrieves relevant data. 
+    5. System generates the report. 
+    6. User views the report. 
+
+7. Business Rules
+Business rules define important rules that the software must follow.
+BR-001
+Every inventory item must have a unique identifier.
+BR-002
+Inventory quantity cannot be negative.
+BR-003
+Stock cannot be issued when the requested quantity exceeds available stock.
+BR-004
+Only authorized users can modify inventory.
+BR-005
+Every stock receiving transaction must increase the relevant stock quantity.
+BR-006
+Every stock issuing transaction must decrease the relevant stock quantity.
+BR-007
+Every stock transaction must have a transaction date.
+BR-008
+Every stock transaction must identify the responsible user.
+BR-009
+Users can only access functions permitted by their roles.
+BR-010
+Deactivated users cannot log into the system.
+
+8. Data Requirements
+8.1 User Data
+The system should store:
+    • User ID 
+    • Full name 
+    • Email 
+    • Password hash 
+    • Role 
+    • Status 
+    • Created date 
+
+8.2 Inventory Data
+The system should store:
+    • Item ID 
+    • Item name 
+    • Category 
+    • Description 
+    • Quantity 
+    • Unit 
+    • Minimum stock level 
+    • Status 
+    • Created date 
+    • Updated date 
+
+8.3 Category Data
+    • Category ID 
+    • Category name 
+    • Description 
+    • Created date 
+
+8.4 Supplier Data
+    • Supplier ID 
+    • Supplier name 
+    • Contact person 
+    • Phone 
+    • Email 
+    • Address 
+
+8.5 Stock Transaction Data
+    • Transaction ID 
+    • Item 
+    • Transaction type 
+    • Quantity 
+    • Supplier 
+    • Department 
+    • Recipient 
+    • User 
+    • Date 
+    • Reference information 
+
+9. External Interface Requirements
+9.1 User Interface
+The system should provide:
+    • Login page 
+    • Dashboard 
+    • Navigation menu 
+    • Inventory page 
+    • Inventory form 
+    • Supplier page 
+    • Category page 
+    • Stock receiving form 
+    • Stock issuing form 
+    • Reports page 
+    • User management page 
+Detailed UI/UX design will be completed in the next design phase.
+
+9.2 Software Interfaces
+The frontend will communicate with the backend through REST APIs.
+Example:
+React Frontend
+      │
+      │ HTTP Request
+      ▼
+Express REST API
+      │
+      ▼
+MongoDB
+
+9.3 Hardware Interface
+The system does not require specialized hardware for the MVP.
+Users can access it using:
+    • Desktop computers 
+    • Laptops 
+    • Other supported web-enabled devices 
+
+9.4 Network Interface
+The deployed system will use HTTP/HTTPS communication.
+HTTPS should be used in production to protect data transmitted between the client and server.
+
+10. Acceptance Criteria
+Acceptance criteria define when a requirement is considered successfully implemented.
+
+Authentication
+Requirement: User login.
+Acceptance Criteria:
+    • User can enter valid credentials. 
+    • Valid credentials allow access. 
+    • Invalid credentials are rejected. 
+    • Appropriate error messages are displayed. 
+    • Unauthorized users cannot access protected pages. 
+
+Inventory
+Requirement: Add inventory item.
+Acceptance Criteria:
+    • Authorized user can open the Add Item form. 
+    • Required fields are validated. 
+    • Item is saved successfully. 
+    • Item appears in inventory. 
+    • Duplicate identifiers are rejected. 
+
+Stock Receiving
+Requirement: Receive stock.
+Acceptance Criteria:
+    • User selects an existing item. 
+    • User enters a valid quantity. 
+    • System increases stock quantity. 
+    • Transaction is recorded. 
+    • User receives confirmation. 
+
+Stock Issuing
+Requirement: Issue stock.
+Acceptance Criteria:
+    • User selects an item. 
+    • User enters quantity. 
+    • System checks available stock. 
+    • Valid transaction decreases stock. 
+    • Transaction is recorded. 
+    • System rejects insufficient stock. 
+
+11. Product Backlog
+The product backlog contains the work required to develop the system.
+ID
+Backlog Item
+Priority
+PB-001
+Authentication
+High
+PB-002
+User management
+High
+PB-003
+Role management
+High
+PB-004
+Dashboard
+Medium
+PB-005
+Inventory CRUD
+High
+PB-006
+Category management
+High
+PB-007
+Supplier management
+Medium
+PB-008
+Stock receiving
+High
+PB-009
+Stock issuing
+High
+PB-010
+Stock tracking
+High
+PB-011
+Search and filtering
+Medium
+PB-012
+Reports
+High
+PB-013
+Validation
+High
+PB-014
+Error handling
+High
+PB-015
+Testing
+High
+PB-016
+Dockerization
+High
+PB-017
+Deployment
+High
+
+12. Requirement Prioritization
+We will use MoSCoW prioritization.
+Must Have
+Required for MVP.
+    • Authentication 
+    • User management 
+    • Role management 
+    • Inventory 
+    • Categories 
+    • Stock receiving 
+    • Stock issuing 
+    • Stock tracking 
+    • Basic reports 
+Should Have
+Important but not absolutely required for the first release.
+    • Advanced filtering 
+    • Exporting reports 
+    • Notifications 
+    • Audit logs 
+Could Have
+Useful additional features.
+    • Barcode/QR code 
+    • Advanced analytics 
+    • More dashboard visualizations 
+Won't Have in MVP
+Not included in the first version.
+    • Mobile application 
+    • AI forecasting 
+    • Multi-campus management 
+    • External ERP integration 
+
+13. Requirement Traceability
+Requirement traceability connects requirements to other project artifacts.
+For example:
+Requirement
+     ↓
+User Story
+     ↓
+Use Case
+     ↓
+UI Design
+     ↓
+API
+     ↓
+Database
+     ↓
+Implementation
+     ↓
+Test Case
+Example:
+Requirement
+User Story
+Use Case
+Test
+FR-INV-001
+US-005
+UC-005
+TC-INV-001
+FR-REC-001
+US-008
+UC-008
+TC-REC-001
+FR-ISS-001
+US-009
+UC-009
+TC-ISS-001
+FR-AUTH-001
+US-001
+UC-001
+TC-AUTH-001
+This will become particularly useful during the Testing phase.
+
+14. SRS Review and Approval
+Before development begins, the requirements should be reviewed.
+Review Checklist
+Question
+Status
+Is the project purpose clear?
+☐
+Are all major users identified?
+☐
+Are functional requirements documented?
+☐
+Are non-functional requirements documented?
+☐
+Are user stories defined?
+☐
+Are use cases defined?
+☐
+Are business rules documented?
+☐
+Are data requirements identified?
+☐
+Is the MVP defined?
+☐
+Are requirements prioritized?
+☐
+Are acceptance criteria defined?
+☐
+Is the SRS internally consistent?
+☐
+
+Sprint 1 Deliverables
+At the end of Sprint 1, you should have:
+Sprint 1
+│
+├── SRS
+│   ├── Introduction
+│   ├── Overall Description
+│   ├── Functional Requirements
+│   ├── Non-Functional Requirements
+│   ├── User Stories
+│   ├── Use Cases
+│   ├── Business Rules
+│   ├── Data Requirements
+│   ├── Interface Requirements
+│   ├── Acceptance Criteria
+│   ├── Product Backlog
+│   ├── Prioritization
+│   └── Traceability
+│
+└── Sprint Review
+Sprint 1 → Sprint 2
+Now notice how your personal project is progressing:
+SPRINT 0
+Product Planning
+       │
+       ▼
+"What are we building?"
+       │
+       ▼
+SPRINT 1
+Requirement Analysis / SRS
+       │
+       ▼
+"What exactly must it do?"
+       │
+       ▼
+SPRINT 2
+UI/UX Design
+       │
+       ▼
+"How should users interact with it?"
+       │
+       ▼
+SPRINT 3
+SAD / Architecture
+       │
+       ▼
+"How should we technically build it?"
+       │
+       ▼
+DEVELOPMENT
+       │
+       ▼
+TESTING
+       │
+       ▼
+DOCKER
+       │
+       ▼
+DEPLOYMENT
+

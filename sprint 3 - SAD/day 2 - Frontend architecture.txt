@@ -1,0 +1,784 @@
+﻿🚀 Sprint 3 — Day 3: Frontend Architecture
+Today we move from the overall system architecture into the React frontend architecture.
+Yesterday we had:
+                    USER
+                      │
+                      ↓
+              ┌─────────────┐
+              │    React    │
+              │  Frontend  │
+              └──────┬──────┘
+                     │
+                  REST API
+                     │
+                     ↓
+              ┌─────────────┐
+              │   Express   │
+              │   Backend   │
+              └──────┬──────┘
+                     │
+                     ↓
+                 MongoDB
+Today we're asking:
+"Inside that React box, how should we organize everything?"
+And because you specifically want to understand software development rather than blindly copy structures, we'll learn why every folder exists and what problem it solves.
+
+1. What Is Frontend Architecture?
+Frontend architecture is the plan for organizing your frontend application.
+A small React application can look like:
+src/
+├── App.jsx
+└── main.jsx
+That's fine when you're learning.
+But ASTU Stock Management System will eventually contain:
+    • Login 
+    • Dashboard 
+    • Inventory 
+    • Suppliers 
+    • Stock In 
+    • Stock Out 
+    • Reports 
+    • Users 
+    • Settings 
+    • Authentication 
+    • API calls 
+    • Reusable components 
+    • Forms 
+    • Validation 
+    • State management 
+If we put everything into App.jsx, we could eventually have thousands of lines in one file. 😵
+So we need organization.
+
+2. Our Proposed Frontend Structure
+We'll eventually use something similar to:
+client/
+└── src/
+    │
+    ├── assets/
+    ├── components/
+    ├── pages/
+    ├── layouts/
+    ├── services/
+    ├── hooks/
+    ├── context/
+    ├── utils/
+    ├── routes/
+    │
+    ├── App.jsx
+    └── main.jsx
+⚠️ Don't create all these folders yet.
+Today we're learning what they mean first.
+
+3. main.jsx
+You already encountered this in your React projects.
+src/
+└── main.jsx
+What does it do?
+It's usually the entry point where React starts.
+Conceptually:
+Browser
+   ↓
+main.jsx
+   ↓
+React Application
+   ↓
+App.jsx
+A simplified example:
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+Why is it important?
+It tells the browser:
+"Start the React application here."
+Problem it solves
+Without an entry point, React doesn't know where to start rendering the application.
+
+4. App.jsx
+You have already used this many times.
+src/
+└── App.jsx
+Think of App.jsx as the main composition point of your application.
+For example:
+App.jsx
+   │
+   ├── Navbar
+   ├── Sidebar
+   └── Current Page
+Later, routing might make it:
+App
+ │
+ ├── Login
+ │
+ └── Dashboard Layout
+      ├── Dashboard
+      ├── Inventory
+      ├── Suppliers
+      └── Reports
+Problem it solves
+It gives the application a central place to compose the major pieces.
+
+5. pages/
+This folder contains full application screens/pages.
+For example:
+pages/
+├── Login.jsx
+├── Dashboard.jsx
+├── Inventory.jsx
+├── Suppliers.jsx
+├── StockIn.jsx
+├── StockOut.jsx
+├── Reports.jsx
+└── Settings.jsx
+Think about your Figma designs.
+You designed screens such as:
+Login
+Dashboard
+Inventory
+Add Item
+Suppliers
+Reports
+Those become candidates for React pages.
+Example
+Figma
+  ↓
+Dashboard Design
+  ↓
+pages/Dashboard.jsx
+Problem it solves
+Without pages/, you might put every screen directly inside App.jsx.
+That makes the application difficult to maintain.
+
+6. components/
+This is one of the most important folders.
+Components are reusable UI building blocks.
+For example:
+components/
+├── Button.jsx
+├── Input.jsx
+├── Modal.jsx
+├── Card.jsx
+├── Table.jsx
+├── Badge.jsx
+├── Sidebar.jsx
+└── Header.jsx
+Imagine your Design System from Sprint 2.
+You defined:
+Button
+Input
+Card
+Table
+Modal
+Badge
+Now we can implement those as reusable React components.
+
+Why reusable components?
+Imagine you have 20 pages.
+Without reusable components:
+Dashboard → create button
+Inventory → create another button
+Suppliers → create another button
+Reports → create another button
+You repeat the same code.
+Instead:
+Button.jsx
+    ↑
+    │
+ ┌──┼────┬──────┐
+ ↓  ↓    ↓      ↓
+Dashboard Inventory Reports Settings
+One component can be reused everywhere.
+Problem solved
+Code duplication + inconsistent UI.
+This is one of the places where your Design System becomes actual code.
+
+7. layouts/
+A layout defines the overall structure surrounding pages.
+For your system, imagine:
+┌───────────────────────────────────────────────┐
+│ Header                                        │
+├──────────────┬────────────────────────────────┤
+│              │                                │
+│ Sidebar      │        Page Content            │
+│              │                                │
+│ Dashboard    │                                │
+│ Inventory    │                                │
+│ Suppliers    │                                │
+│ Reports      │                                │
+│              │                                │
+└──────────────┴────────────────────────────────┘
+You don't want to recreate that structure on every page.
+So:
+layouts/
+└── DashboardLayout.jsx
+could contain:
+Header
+Sidebar
+Main content
+Then:
+Dashboard
+Inventory
+Suppliers
+Reports
+can all use the same layout.
+Problem solved
+Repeated page structure.
+
+8. services/
+This is where we organize communication with the backend.
+For example:
+services/
+├── authService.js
+├── inventoryService.js
+├── supplierService.js
+└── reportService.js
+Suppose the frontend needs inventory:
+React
+ ↓
+inventoryService.js
+ ↓
+GET /api/inventory
+ ↓
+Express
+Instead of putting API requests directly everywhere:
+// Dashboard.jsx
+fetch("http://localhost:5000/api/inventory");
+
+// Inventory.jsx
+fetch("http://localhost:5000/api/inventory");
+
+// Reports.jsx
+fetch("http://localhost:5000/api/inventory");
+we organize API communication.
+For example:
+export async function getInventory() {
+  const response = await fetch("/api/inventory");
+  return response.json();
+}
+Then components can use the service.
+Problem solved
+Scattered and duplicated API communication.
+It also makes changing the backend URL or API logic easier later.
+
+9. hooks/
+React provides hooks such as:
+useState
+useEffect
+useContext
+But eventually we can create custom hooks.
+Example:
+hooks/
+├── useAuth.js
+├── useInventory.js
+└── useDebounce.js
+For example:
+useInventory()
+     ↓
+fetch inventory
+     ↓
+loading
+     ↓
+data
+     ↓
+error
+Problem solved
+Repeated stateful logic across components.
+We'll learn this properly when we start implementing features.
+
+10. context/
+This is for shared application state using React Context.
+For example:
+context/
+├── AuthContext.jsx
+└── ThemeContext.jsx
+Suppose your application needs to know:
+Who is logged in?
+What role do they have?
+Are they authenticated?
+Many components may need that information.
+Instead of passing it through:
+App
+ ↓
+Layout
+ ↓
+Sidebar
+ ↓
+Header
+ ↓
+Page
+we can provide shared state through Context.
+Conceptually:
+               AuthContext
+              /     |      \
+             ↓      ↓       ↓
+         Header  Sidebar  Pages
+Problem solved
+Prop drilling and duplicated global state logic.
+
+11. utils/
+Utilities are small reusable helper functions.
+For example:
+utils/
+├── formatDate.js
+├── formatCurrency.js
+└── validation.js
+Imagine you need to format dates in 15 different places.
+Instead of rewriting:
+date formatting logic
+date formatting logic
+date formatting logic
+...
+you can have:
+formatDate()
+and reuse it.
+Problem solved
+Repeated small helper logic.
+
+12. assets/
+This is for static frontend resources.
+For example:
+assets/
+├── images/
+├── icons/
+└── fonts/
+You may have:
+logo.png
+empty-state.svg
+profile-placeholder.png
+Problem solved
+Keeps static resources organized rather than scattering them throughout the project.
+
+13. routes/
+This is where we can organize frontend navigation.
+For example:
+routes/
+└── AppRoutes.jsx
+Conceptually:
+/login
+/dashboard
+/inventory
+/suppliers
+/reports
+/settings
+React Router can map URLs to pages:
+/dashboard
+     ↓
+Dashboard.jsx
+
+/inventory
+     ↓
+Inventory.jsx
+
+/suppliers
+     ↓
+Suppliers.jsx
+Problem solved
+Keeping navigation and routing logic organized.
+
+14. Putting Everything Together
+Now our structure makes more sense:
+client/
+└── src/
+    │
+    ├── assets/
+    │   ├── images/
+    │   └── icons/
+    │
+    ├── components/
+    │   ├── Button.jsx
+    │   ├── Input.jsx
+    │   ├── Card.jsx
+    │   ├── Table.jsx
+    │   └── Modal.jsx
+    │
+    ├── pages/
+    │   ├── Login.jsx
+    │   ├── Dashboard.jsx
+    │   ├── Inventory.jsx
+    │   ├── Suppliers.jsx
+    │   └── Reports.jsx
+    │
+    ├── layouts/
+    │   └── DashboardLayout.jsx
+    │
+    ├── services/
+    │   ├── authService.js
+    │   ├── inventoryService.js
+    │   └── supplierService.js
+    │
+    ├── hooks/
+    │   └── useAuth.js
+    │
+    ├── context/
+    │   └── AuthContext.jsx
+    │
+    ├── utils/
+    │   ├── formatDate.js
+    │   └── validation.js
+    │
+    ├── routes/
+    │   └── AppRoutes.jsx
+    │
+    ├── App.jsx
+    └── main.jsx
+
+15. Now Connect This to Your Figma Design
+This is where Sprint 2 and Sprint 3 connect.
+Your Figma Design System had:
+Buttons
+Cards
+Inputs
+Tables
+Modals
+Typography
+Colors
+Spacing
+Your React architecture has:
+components/
+├── Button
+├── Card
+├── Input
+├── Table
+└── Modal
+So:
+             SPRINT 2
+              FIGMA
+                │
+                ↓
+        Design System
+                │
+                ↓
+             SPRINT 3
+                │
+                ↓
+       React Components
+This is the transition from:
+UI/UX Design
+to:
+Frontend Engineering.
+
+16. How a Page Is Built
+Let's take your Inventory page.
+You might have:
+pages/
+└── Inventory.jsx
+But the page shouldn't contain everything.
+Instead:
+Inventory.jsx
+      │
+      ├── DashboardLayout
+      │
+      ├── PageHeader
+      │
+      ├── SearchInput
+      │
+      ├── Filter
+      │
+      ├── InventoryTable
+      │
+      └── Pagination
+And:
+Inventory.jsx
+      │
+      ↓
+inventoryService.js
+      │
+      ↓
+GET /api/inventory
+      │
+      ↓
+Express
+      │
+      ↓
+MongoDB
+Now you can see how architecture affects actual development.
+
+17. A Common Beginner Mistake
+A beginner may build:
+Inventory.jsx
+with:
+500 lines
+1000 lines
+1500 lines
+containing:
+    • UI 
+    • API calls 
+    • validation 
+    • state 
+    • formatting 
+    • business logic 
+    • modals 
+    • tables 
+Everything is mixed together.
+It may work.
+But it becomes difficult to maintain.
+We want:
+Page
+ ↓
+Components
+ ↓
+Services
+ ↓
+API
+with each part having a clear responsibility.
+
+18. Separation of Concerns
+Remember yesterday's concept?
+Today it becomes more concrete.
+Component
+    ↓
+"What does it look like?"
+
+Page
+    ↓
+"What screen are we displaying?"
+
+Service
+    ↓
+"How do we communicate with the backend?"
+
+Hook
+    ↓
+"How do we reuse stateful logic?"
+
+Context
+    ↓
+"What shared state does the application need?"
+
+Utility
+    ↓
+"What small helper function can we reuse?"
+This is separation of concerns in practice.
+
+19. Feature-Based Structure — Another Option
+There is another architecture you should know.
+Instead of organizing everything by technical type:
+components/
+pages/
+services/
+hooks/
+you can organize by feature:
+features/
+├── auth/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   └── hooks/
+│
+├── inventory/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   └── hooks/
+│
+└── suppliers/
+    ├── components/
+    ├── pages/
+    └── services/
+This can become very powerful for large applications.
+Which will we use?
+For your learning project, I recommend starting with the simple layered structure:
+components/
+pages/
+services/
+hooks/
+context/
+...
+Why?
+Because you're learning the responsibility of each architectural layer.
+Later, when you understand it well, you can explore feature-based architecture.
+
+20. What Problem Does Our Architecture Solve?
+Without architecture:
+Everything
+   ↓
+Everywhere
+   ↓
+Confusing
+   ↓
+Hard to maintain
+   ↓
+Hard to collaborate
+With architecture:
+UI → components
+Pages → pages
+API → services
+Shared logic → hooks
+Shared state → context
+Helpers → utils
+Navigation → routes
+Result:
+The codebase becomes easier to understand, maintain, test, and collaborate on.
+This is particularly important when you start working with your ASTU team.
+
+21. Today's Documentation
+Today we can expand the architecture documentation we created yesterday.
+Your structure can now be:
+docs/
+└── architecture/
+    ├── system-architecture.md
+    └── frontend-architecture.md
+Why frontend-architecture.md?
+Because system-architecture.md answers:
+How does the whole system work?
+While:
+frontend-architecture.md answers how the React application is organized.
+
+22. What Should frontend-architecture.md Contain?
+Start with:
+# ASTU Stock Management System
+# Frontend Architecture
+
+## 1. Overview
+
+## 2. Technology Stack
+
+## 3. Application Structure
+
+## 4. Folder Structure
+
+## 5. Component Architecture
+
+## 6. Page Architecture
+
+## 7. Layout Architecture
+
+## 8. API Communication
+
+## 9. State Management
+
+## 10. Routing
+
+## 11. Authentication
+
+## 12. Error Handling
+
+## 13. Design System Integration
+
+## 14. Responsive Design
+We will gradually fill this in as we continue Sprint 3.
+
+🧠 Practice — Don't Use Kiro Yet
+Since you're intentionally postponing Kiro until Sprint 4, let's test your understanding.
+Imagine we need a Supplier Management page.
+Answer these:
+Question 1
+Where should the complete Supplier screen live?
+components/
+pages/
+services/
+utils/
+Question 2
+Where should a reusable SupplierTable live?
+components/
+pages/
+services/
+utils/
+Question 3
+Where should:
+GET /api/suppliers
+POST /api/suppliers
+be handled on the frontend?
+Question 4
+Where should a reusable:
+formatDate()
+function live?
+Question 5
+Where should the application's logged-in user information be shared?
+
+✅ Answers
+Try answering first, then compare:
+1. Supplier.jsx
+   → pages/
+
+2. SupplierTable.jsx
+   → components/
+
+3. supplierService.js
+   → services/
+
+4. formatDate.js
+   → utils/
+
+5. AuthContext
+   → context/
+If you understood why those answers are correct, you've understood today's main lesson.
+
+🎯 Sprint 3 — Day 3 Deliverables
+Knowledge
+You should now understand:
+    • Frontend architecture 
+    • React application structure 
+    • Pages vs components 
+    • Layouts 
+    • Services 
+    • Hooks 
+    • Context 
+    • Utilities 
+    • Assets 
+    • Routes 
+    • Separation of concerns 
+    • Design System → React Components 
+Documentation
+Create:
+docs/
+└── architecture/
+    ├── system-architecture.md
+    └── frontend-architecture.md
+Git
+Since you decided today that you want to push your work regularly, after completing today's work:
+git status
+git add .
+git commit -m "docs: add frontend architecture"
+git push
+This is a documentation commit, not a development commit.
+Your GitHub history is now beginning to tell the story of your SDLC:
+Sprint 0
+   ↓
+Product Planning
+   ↓
+Sprint 1
+   ↓
+Requirements
+   ↓
+Sprint 2
+   ↓
+UX/UI Design
+   ↓
+Sprint 3 Day 1
+   ↓
+Technical Requirements
+   ↓
+Sprint 3 Day 2
+   ↓
+System Architecture
+   ↓
+ Sprint 3 Day 3
+   ↓
+Frontend Architecture
+
+🔜 Sprint 3 — Day 4
+Tomorrow we go to the other side:
+Backend Architecture — Node.js + Express
+We'll learn:
+server/
+├── config/
+├── models/
+├── routes/
+├── controllers/
+├── services/
+├── middleware/
+├── utils/
+└── server.js
+And again, we won't simply create folders.
+For every folder, we'll answer:
+Why does it exist?
+What problem does it solve?
+What happens if we put everything in server.js?
+Then you'll understand the backend architecture before Kiro ever writes it.
+

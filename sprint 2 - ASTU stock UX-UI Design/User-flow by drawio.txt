@@ -1,0 +1,640 @@
+﻿🚀 Sprint 2 — Day 2: User Flow Design
+Welcome back! Yesterday we learned what UX/UI design is and created our UX Design Brief.
+Today we move to the next step:
+How does a user move through the system to accomplish a goal?
+This is called a User Flow.
+
+1. What is a User Flow?
+A User Flow is the sequence of steps a user follows to complete a task in a software system.
+For example, our Store Keeper wants to receive new stock.
+We don't simply say:
+"There should be a Receive Stock page."
+We ask:
+What does the user do from the moment they start until the task is completed?
+Login
+  ↓
+Dashboard
+  ↓
+Receive Stock
+  ↓
+Select Item
+  ↓
+Select Supplier
+  ↓
+Enter Quantity
+  ↓
+Review
+  ↓
+Confirm
+  ↓
+Stock Updated
+  ↓
+Success
+That's a user flow.
+
+2. Why is User Flow Important?
+Imagine we skip user flows and immediately design Figma screens.
+We might create:
+Dashboard
+Inventory
+Receive
+Issue
+Reports
+...
+But we don't know:
+    • What happens after clicking Receive? 
+    • What information is required? 
+    • What if the quantity is invalid? 
+    • What if the item doesn't exist? 
+    • What happens after successful submission? 
+    • Can the user cancel? 
+    • What happens when an error occurs? 
+User Flow forces us to think about those questions before UI design.
+So:
+Requirement
+     ↓
+User Flow
+     ↓
+Wireframe
+     ↓
+UI
+
+3. User Flow vs Sitemap
+These are different.
+Sitemap / Information Architecture
+Shows what pages exist and how they are organized.
+Dashboard
+├── Inventory
+├── Stock
+├── Suppliers
+├── Reports
+└── Users
+User Flow
+Shows how a user moves through those pages to complete one task.
+Dashboard
+   ↓
+Inventory
+   ↓
+Select Item
+   ↓
+Edit Item
+   ↓
+Save
+   ↓
+Success
+We'll build the sitemap tomorrow on Day 3.
+
+4. Our Main Users
+From our SRS:
+User
+Important Tasks
+Administrator
+Manage users and roles
+Store Keeper
+Manage inventory and stock
+Department Staff
+Request/receive stock
+Procurement Officer
+Manage suppliers
+Finance Officer
+View relevant reports
+Management
+Monitor reports
+But we'll start with the Store Keeper, because that is the core user of the MVP.
+
+5. User Flow Notation
+We'll use simple symbols.
+   (Start/End)
+       ○
+
+   [Screen/Action]
+       ▭
+
+   <Decision>
+       ◇
+
+       ↓
+   Direction
+For example:
+      ○ Start
+        ↓
+   ▭ Login Screen
+        ↓
+   ◇ Credentials valid?
+      /       \
+    No         Yes
+    ↓           ↓
+▭ Show Error  ▭ Dashboard
+                ↓
+               ○ End
+You don't need complicated diagram notation yet.
+
+6. Flow 1 — Login
+Let's start with the simplest flow.
+Goal
+A user wants to access the system.
+○ Start
+   ↓
+▭ Open Login Page
+   ↓
+▭ Enter Email
+   ↓
+▭ Enter Password
+   ↓
+▭ Click Login
+   ↓
+◇ Are credentials valid?
+   │
+   ├── NO ──→ ▭ Show Error
+   │             ↓
+   │         ▭ Try Again
+   │             │
+   │             └──────→ Login
+   │
+   └── YES ──→ ▭ Identify User Role
+                    ↓
+                ▭ Dashboard
+                    ↓
+                    ○
+Why do we have the decision?
+Because real software doesn't have only a "happy path."
+We need to consider:
+Success
+Failure
+This is one of the most important lessons in user-flow design.
+
+7. Flow 2 — Add Inventory Item
+Goal
+Store Keeper wants to add a new item.
+○ Start
+   ↓
+▭ Dashboard
+   ↓
+▭ Inventory
+   ↓
+▭ Click "Add Item"
+   ↓
+▭ Add Item Form
+   ↓
+▭ Enter Item Information
+   ↓
+◇ Is information valid?
+   │
+   ├── NO
+   │    ↓
+   │  ▭ Show Validation Errors
+   │    ↓
+   │  ▭ Correct Information
+   │    │
+   │    └────→ Add Item Form
+   │
+   └── YES
+        ↓
+      ◇ Does Item ID already exist?
+        │
+        ├── YES → ▭ Show Duplicate Error
+        │              ↓
+        │          Add Item Form
+        │
+        └── NO
+             ↓
+           ▭ Save Item
+             ↓
+           ▭ Show Success Message
+             ↓
+           ▭ Inventory List
+             ↓
+             ○
+Notice something important.
+We didn't just design:
+Add Item Form
+We thought about:
+    • validation 
+    • duplicate items 
+    • errors 
+    • success 
+    • returning to inventory 
+That's UX thinking.
+
+8. Flow 3 — Receive Stock ⭐
+This is one of our most important flows.
+User Goal
+Store Keeper receives 50 boxes of paper from a supplier.
+Main flow
+○ Start
+   ↓
+▭ Dashboard
+   ↓
+▭ Stock
+   ↓
+▭ Receive Stock
+   ↓
+▭ Select Inventory Item
+   ↓
+▭ Select Supplier
+   ↓
+▭ Enter Quantity
+   ↓
+▭ Enter Receiving Date
+   ↓
+▭ Review Information
+   ↓
+◇ Is information valid?
+   │
+   ├── NO
+   │    ↓
+   │  ▭ Show Error
+   │    ↓
+   │  ▭ Correct Information
+   │    │
+   │    └────→ Review
+   │
+   └── YES
+        ↓
+      ▭ Confirm Receipt
+        ↓
+      ▭ Update Stock Quantity
+        ↓
+      ▭ Save Transaction
+        ↓
+      ▭ Show Success
+        ↓
+      ▭ Stock History
+        ↓
+        ○
+
+9. What if something goes wrong?
+This is where your UX becomes more realistic.
+Scenario A — Quantity is invalid
+Quantity: -10
+       ↓
+❌ Invalid quantity
+User corrects it.
+
+Scenario B — Supplier doesn't exist
+The user should be able to:
+Supplier
+[ Select Supplier ▼ ]
+
++ Add New Supplier
+This is a UX decision we may consider during wireframing.
+
+Scenario C — Network/server error
+Imagine the Store Keeper clicks:
+Confirm Receipt
+but the server doesn't respond.
+The user shouldn't see:
+Something went wrong.
+with no useful information.
+Instead:
+⚠ Unable to save the transaction.
+
+Your stock was not changed.
+Please check your connection and try again.
+
+[Try Again]
+[Cancel]
+This is error-state UX.
+We'll design these states later.
+
+10. Flow 4 — Issue Stock ⭐
+This is another critical flow.
+User Goal
+Store Keeper gives 20 boxes of paper to a department.
+○ Start
+   ↓
+▭ Dashboard
+   ↓
+▭ Stock
+   ↓
+▭ Issue Stock
+   ↓
+▭ Select Item
+   ↓
+▭ Enter Quantity
+   ↓
+▭ Select Department
+   ↓
+▭ Enter Recipient
+   ↓
+◇ Is quantity available?
+   │
+   ├── NO
+   │    ↓
+   │  ▭ Show "Insufficient Stock"
+   │    ↓
+   │  ▭ Change Quantity
+   │    │
+   │    └────→ Check Again
+   │
+   └── YES
+        ↓
+      ▭ Review
+        ↓
+      ▭ Confirm Issue
+        ↓
+      ▭ Decrease Stock
+        ↓
+      ▭ Save Transaction
+        ↓
+      ▭ Show Success
+        ↓
+      ▭ Stock History
+        ↓
+        ○
+
+11. Important Business Rule
+Remember our SRS:
+BR-003: Stock cannot be issued when the requested quantity exceeds available stock.
+Therefore our UX must reflect that rule.
+Suppose:
+Available Stock = 15
+User enters:
+Issue Quantity = 20
+The UI should immediately help the user:
+Available: 15
+
+Quantity:
+[ 20 ]
+
+⚠ Only 15 items are available.
+
+[Issue Stock]
+The button could be disabled or submission rejected.
+This is an excellent example of how:
+Business Rule
+       ↓
+UX Decision
+       ↓
+UI Behavior
+
+12. Flow 5 — Search Inventory
+This is a simpler flow.
+○ Start
+   ↓
+▭ Dashboard
+   ↓
+▭ Inventory
+   ↓
+▭ Search Box
+   ↓
+▭ Enter "Printer Paper"
+   ↓
+▭ System Searches
+   ↓
+◇ Results Found?
+   │
+   ├── NO → ▭ "No items found"
+   │
+   └── YES
+        ↓
+      ▭ Display Results
+        ↓
+      ▭ Select Item
+        ↓
+      ▭ View Item Details
+        ↓
+        ○
+
+13. Flow 6 — View Low Stock
+Our dashboard should help users quickly identify problems.
+○ Start
+   ↓
+▭ Login
+   ↓
+▭ Dashboard
+   ↓
+▭ Low Stock Section
+   ↓
+◇ Are there low-stock items?
+   │
+   ├── NO
+   │    ↓
+   │  ▭ "All stock levels are healthy"
+   │
+   └── YES
+        ↓
+      ▭ Display Low Stock Items
+        ↓
+      ▭ Select Item
+        ↓
+      ▭ View Details
+        ↓
+        ○
+This will later influence our dashboard UI.
+
+14. Flow 7 — Generate Report
+○ Start
+   ↓
+▭ Dashboard
+   ↓
+▭ Reports
+   ↓
+▭ Select Report Type
+   ↓
+▭ Select Date/Filters
+   ↓
+▭ Generate
+   ↓
+◇ Is data available?
+   │
+   ├── NO → ▭ "No data found"
+   │
+   └── YES
+        ↓
+      ▭ Display Report
+        ↓
+      ▭ Export/Print (if supported)
+        ↓
+        ○
+
+15. Flow 8 — Administrator Creates User
+○ Start
+   ↓
+▭ Dashboard
+   ↓
+▭ User Management
+   ↓
+▭ Add User
+   ↓
+▭ Enter User Information
+   ↓
+▭ Select Role
+   ↓
+◇ Is information valid?
+   │
+   ├── NO → ▭ Show Errors
+   │            ↓
+   │        Correct Information
+   │
+   └── YES
+        ↓
+      ▭ Create User
+        ↓
+      ▭ Show Success
+        ↓
+      ▭ User List
+        ↓
+        ○
+
+16. Our Main User Flows
+We now have:
+ID
+User Flow
+Priority
+UF-001
+Login
+Must
+UF-002
+Add Inventory
+Must
+UF-003
+Receive Stock
+Must
+UF-004
+Issue Stock
+Must
+UF-005
+Search Inventory
+Must
+UF-006
+View Low Stock
+Must
+UF-007
+Generate Report
+Must
+UF-008
+Create User
+Must
+
+17. The Most Important Lesson Today
+Notice how the SRS and UX are connected.
+For example:
+SRS
+FR-ISS-007
+
+The system shall decrease available stock
+after a successful issue.
+User Flow
+Issue Stock
+     ↓
+Confirm
+     ↓
+Decrease Stock
+     ↓
+Save Transaction
+     ↓
+Success
+Later UI
+We'll eventually create:
+┌──────────────────────────────────┐
+│        Issue Stock               │
+│                                  │
+│ Item:     [ Printer Paper ▼ ]    │
+│ Available: 150                   │
+│                                  │
+│ Quantity: [ 20 ]                 │
+│                                  │
+│ Department: [ CSE ▼ ]             │
+│                                  │
+│ Recipient: [ __________ ]        │
+│                                  │
+│ [Cancel]          [Issue Stock]  │
+└──────────────────────────────────┘
+Later Backend
+Eventually:
+POST /api/stock/issue
+Later Database
+Something like:
+Stock
+ └── quantity: 130
+Later Testing
+Given:
+Available stock = 150
+
+When:
+User issues 20
+
+Then:
+Available stock = 130
+This is the SDLC connection I want you to understand.
+SRS
+ ↓
+User Flow
+ ↓
+UI
+ ↓
+API
+ ↓
+Database
+ ↓
+Code
+ ↓
+Test
+
+18. Where Should We Draw These?
+For today, don't worry about making beautiful diagrams.
+Use Draw.io.
+Create:
+03-UI-UX-Design/
+│
+├── 01-UX-Design-Brief.md
+│
+└── 02-User-Flows/
+    ├── UF-001-Login.drawio
+    ├── UF-002-Add-Inventory.drawio
+    ├── UF-003-Receive-Stock.drawio
+    ├── UF-004-Issue-Stock.drawio
+    ├── UF-005-Search-Inventory.drawio
+    ├── UF-006-Low-Stock.drawio
+    ├── UF-007-Generate-Report.drawio
+    └── UF-008-Create-User.drawio
+Why create 02-User-Flows?
+Because the first design artifact is now the UX brief, and the second is user flows.
+It keeps the design work organized:
+03-UI-UX-Design
+       │
+       ├── UX Design Brief
+       │
+       └── User Flows
+
+19. Your Practical Task for Day 2
+Don't just copy the flows I gave you.
+That's important because you are learning.
+Create at least these three flows yourself in Draw.io:
+Flow 1
+Receive Stock
+Flow 2
+Issue Stock
+Flow 3
+Add Inventory
+For each flow, ask:
+"What can go wrong here?"
+Add at least one decision/alternative path.
+For example:
+Issue Stock
+     ↓
+Enter Quantity
+     ↓
+◇ Enough Stock?
+  /        \
+NO          YES
+↓            ↓
+Error      Continue
+
+20. Day 2 Deliverable
+At the end of today, you should have:
+03-UI-UX-Design/
+│
+├── 01-UX-Design-Brief.md
+│
+└── 02-User-Flows/
+    ├── UF-001-Login.drawio
+    ├── UF-002-Add-Inventory.drawio
+    ├── UF-003-Receive-Stock.drawio
+    ├── UF-004-Issue-Stock.drawio
+    ├── UF-005-Search-Inventory.drawio
+    ├── UF-006-Low-Stock.drawio
+    ├── UF-007-Generate-Report.drawio
+    └── UF-008-Create-User.drawio
+

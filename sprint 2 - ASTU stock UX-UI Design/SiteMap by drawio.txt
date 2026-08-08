@@ -1,0 +1,697 @@
+﻿🚀 Sprint 2 — Day 3: Information Architecture & Sitemap
+Great. We have now completed:
+    • ✅ Day 1 — UX Design Brief 
+    • ✅ Day 2 — User Flows 
+    • 🟢 Day 3 — Information Architecture & Sitemap 
+Today we answer an important question:
+Where does everything belong in the system, and how do users navigate between pages?
+
+1. What is Information Architecture?
+Information Architecture (IA) means organizing the application's:
+    • Pages 
+    • Features 
+    • Information 
+    • Navigation 
+    • Menus 
+    • Relationships between screens 
+so users can easily find what they need.
+Think of it like organizing a large building.
+If ASTU has a building:
+Building
+│
+├── Administration
+├── Finance
+├── Library
+├── Laboratory
+└── Store
+You don't put the laboratory inside the library.
+Similarly, in our software:
+ASTU Stock Management System
+│
+├── Dashboard
+├── Inventory
+├── Stock
+├── Suppliers
+├── Reports
+└── Administration
+We need to organize the system logically.
+
+2. Why Do We Need Information Architecture?
+Without IA, you might build a navigation like:
+Dashboard
+Users
+Reports
+Add Item
+Suppliers
+Issue
+Settings
+Inventory
+Receive
+Categories
+History
+Everything is mixed together. ❌
+A Store Keeper might ask:
+"Where do I find Receive Stock?"
+Instead, we organize related functions:
+Inventory
+├── Items
+├── Categories
+└── Stock Levels
+
+Stock Transactions
+├── Receive Stock
+├── Issue Stock
+└── Stock History
+Now the structure makes sense.
+
+3. IA vs User Flow
+This distinction is very important.
+Information Architecture
+Answers:
+"What exists and where is it located?"
+Example:
+Stock
+├── Receive
+├── Issue
+└── History
+User Flow
+Answers:
+"How does a user accomplish a specific task?"
+Example:
+Dashboard
+ ↓
+Stock
+ ↓
+Receive
+ ↓
+Select Item
+ ↓
+Enter Quantity
+ ↓
+Confirm
+So:
+Information Architecture
+        ↓
+   System Structure
+
+User Flow
+        ↓
+   User Journey
+
+4. What is a Sitemap?
+A sitemap is a visual representation of the application's page hierarchy.
+For example:
+ASTU Stock Management System
+│
+├── Login
+│
+└── Dashboard
+    │
+    ├── Inventory
+    │
+    ├── Stock
+    │
+    ├── Suppliers
+    │
+    ├── Reports
+    │
+    └── Administration
+It is essentially the map of our application.
+
+5. Our ASTU Stock Management Sitemap
+Let's design the initial sitemap.
+ASTU Stock Management System
+│
+├── Authentication
+│   ├── Login
+│   └── Logout
+│
+└── Application
+    │
+    ├── Dashboard
+    │
+    ├── Inventory
+    │   ├── Inventory List
+    │   ├── Add Item
+    │   ├── Edit Item
+    │   ├── Item Details
+    │   └── Categories
+    │
+    ├── Stock Management
+    │   ├── Receive Stock
+    │   ├── Issue Stock
+    │   └── Stock History
+    │
+    ├── Suppliers
+    │   ├── Supplier List
+    │   ├── Add Supplier
+    │   ├── Edit Supplier
+    │   └── Supplier Details
+    │
+    ├── Reports
+    │   ├── Inventory Report
+    │   ├── Stock Movement Report
+    │   ├── Low Stock Report
+    │   └── Transaction Report
+    │
+    └── Administration
+        ├── Users
+        ├── Add User
+        ├── Roles
+        └── Permissions
+This is our first version. We can change it when requirements or user research tell us that another structure is better.
+
+6. Let's Think Like a User
+This is where UX becomes interesting.
+Imagine you are a Store Keeper.
+You log in.
+What do you expect to see?
+Probably:
+Dashboard
+Inventory
+Receive Stock
+Issue Stock
+Suppliers
+Reports
+You probably don't want to see:
+Database Configuration
+API Management
+System Architecture
+JWT Configuration
+MongoDB
+Docker
+Why?
+Because those are developer concerns, not user tasks.
+This gives us an important principle:
+The application's navigation should be organized around user goals, not around how developers implement the system.
+
+7. Main Navigation
+Let's create our initial navigation.
+┌─────────────────────────────┐
+│ ASTU Stock Management       │
+├─────────────────────────────┤
+│                             │
+│ 🏠 Dashboard                │
+│ 📦 Inventory                │
+│ 🔄 Stock                   │
+│ 🏢 Suppliers                │
+│ 📊 Reports                  │
+│ 👥 Users                    │
+│ ⚙ Settings                 │
+│                             │
+│ 🚪 Logout                   │
+└─────────────────────────────┘
+Later, we'll design the actual sidebar in Figma.
+For now, we're only defining the structure.
+
+8. Why Group "Receive" and "Issue"?
+We could have:
+Dashboard
+Inventory
+Receive
+Issue
+Suppliers
+Reports
+But another option is:
+Dashboard
+Inventory
+Stock Management
+    ├── Receive
+    ├── Issue
+    └── History
+Suppliers
+Reports
+The second is more logically grouped because:
+Receive
+Issue
+History
+are all stock transactions.
+This is an IA decision.
+
+9. Inventory vs Stock
+This distinction is important for our project.
+Inventory
+Describes what items exist.
+Example:
+Printer Paper
+A4 Notebook
+Desk
+Office Chair
+Computer
+Stock
+Describes what happens to quantities.
+Example:
+Received 100
+Issued 20
+Remaining 80
+Therefore:
+Inventory
+   ↓
+"What items do we have?"
+
+Stock Management
+   ↓
+"What happened to those items?"
+This helps justify our navigation structure.
+
+10. Dashboard Information Architecture
+The Dashboard shouldn't just be a random collection of cards.
+It should answer important questions.
+For a Store Keeper:
+What do I need to know right now?
+Possible dashboard structure:
+Dashboard
+│
+├── Summary
+│   ├── Total Items
+│   ├── Total Stock
+│   ├── Low Stock Items
+│   └── Recent Transactions
+│
+├── Low Stock
+│
+├── Recent Stock Activity
+│
+└── Quick Actions
+    ├── Receive Stock
+    ├── Issue Stock
+    └── Add Item
+This connects directly to our Day 1 UX goals.
+
+11. Role-Based Information Architecture
+Now we introduce another important concept.
+Not every user should have the same navigation.
+For example:
+Administrator
+Dashboard
+Inventory
+Stock
+Suppliers
+Reports
+Users
+Roles
+Settings
+Store Keeper
+Dashboard
+Inventory
+Stock
+Suppliers
+Reports
+Management
+Dashboard
+Reports
+The user should not necessarily see:
+Users
+Roles
+Permissions
+if they don't have permission to manage users.
+
+12. Why is This Important?
+Suppose a Store Keeper sees:
+Dashboard
+Inventory
+Stock
+Suppliers
+Reports
+Users
+Roles
+Permissions
+System Settings
+Audit Logs
+Database
+API
+That's overwhelming.
+We call this cognitive overload.
+A better approach is:
+Show users what they need
+         +
+Hide what they don't need
+         +
+Keep navigation predictable
+This improves UX.
+
+13. Page Hierarchy
+Now let's classify our pages.
+Level 1 — Main Areas
+Dashboard
+Inventory
+Stock
+Suppliers
+Reports
+Administration
+Level 2 — Functions
+For example:
+Inventory
+├── Items
+├── Categories
+└── Item Details
+Level 3 — Actions
+For example:
+Items
+├── Add Item
+├── Edit Item
+└── Delete Item
+So:
+Level 1
+   ↓
+Level 2
+   ↓
+Level 3
+This helps us keep the application organized.
+
+14. Page Inventory
+Let's create a formal page list.
+ID
+Page
+Parent
+Main User
+PG-001
+Login
+Authentication
+All
+PG-002
+Dashboard
+Application
+All
+PG-003
+Inventory List
+Inventory
+Store Keeper
+PG-004
+Add Item
+Inventory
+Store Keeper
+PG-005
+Edit Item
+Inventory
+Store Keeper
+PG-006
+Item Details
+Inventory
+Store Keeper
+PG-007
+Categories
+Inventory
+Store Keeper
+PG-008
+Receive Stock
+Stock
+Store Keeper
+PG-009
+Issue Stock
+Stock
+Store Keeper
+PG-010
+Stock History
+Stock
+Store Keeper
+PG-011
+Supplier List
+Suppliers
+Store Keeper
+PG-012
+Add Supplier
+Suppliers
+Store Keeper
+PG-013
+Edit Supplier
+Suppliers
+Store Keeper
+PG-014
+Inventory Report
+Reports
+Management
+PG-015
+Stock Movement Report
+Reports
+Management
+PG-016
+Low Stock Report
+Reports
+Management
+PG-017
+Users
+Administration
+Administrator
+PG-018
+Roles
+Administration
+Administrator
+PG-019
+Permissions
+Administration
+Administrator
+This table becomes useful later when we design screens.
+
+15. URL / Route Structure
+Now let's connect IA to development.
+Later, when we build the React application, the pages could have routes such as:
+/login
+
+/dashboard
+
+/inventory
+/inventory/add
+/inventory/:id
+/inventory/:id/edit
+
+/stock/receive
+/stock/issue
+/stock/history
+
+/suppliers
+/suppliers/add
+/suppliers/:id/edit
+
+/reports/inventory
+/reports/stock-movement
+/reports/low-stock
+
+/admin/users
+/admin/roles
+/admin/permissions
+Notice what happened:
+Information Architecture
+          ↓
+Page hierarchy
+          ↓
+URL structure
+This is another important connection between UX and development.
+
+16. Don't Design Every Page Yet
+This is important.
+Today we are defining:
+Structure
+We are NOT yet deciding:
+    • exact colors 
+    • fonts 
+    • button styles 
+    • card designs 
+    • table designs 
+    • spacing 
+    • icons 
+Those belong to later steps.
+Remember:
+Day 3
+WHAT GOES WHERE?
+       ↓
+Day 4
+WHAT DOES THE SCREEN LOOK LIKE?
+       ↓
+Day 5
+WHAT DESIGN SYSTEM DO WE USE?
+       ↓
+Day 6
+FINAL UI
+
+17. Create Your Day 3 Folder
+Your personal project should now look like:
+03-UI-UX-Design/
+│
+├── 01-UX-Design-Brief.md
+│
+├── 02-User-Flows/
+│   ├── UF-001-Login.drawio
+│   ├── UF-002-Add-Inventory.drawio
+│   ├── UF-003-Receive-Stock.drawio
+│   ├── UF-004-Issue-Stock.drawio
+│   ├── UF-005-Search-Inventory.drawio
+│   ├── UF-006-Low-Stock.drawio
+│   ├── UF-007-Generate-Report.drawio
+│   └── UF-008-Create-User.drawio
+│
+└── 03-Information-Architecture/
+    ├── sitemap.drawio
+    └── page-inventory.md
+Why 03-Information-Architecture?
+Because we're now creating a separate design artifact that describes how the application is organized.
+It solves:
+"Where should this feature/page live?"
+
+18. Your page-inventory.md
+Create:
+03-UI-UX-Design/03-Information-Architecture/page-inventory.md
+Put the page inventory table from section 14 into this file.
+You can expand it later with:
+Page
+Purpose
+User Role
+Route
+Priority
+Status
+For example:
+Page
+Purpose
+Role
+Route
+Priority
+Dashboard
+View stock summary
+Store Keeper
+/dashboard
+Must
+Inventory
+Manage items
+Store Keeper
+/inventory
+Must
+Receive Stock
+Record received stock
+Store Keeper
+/stock/receive
+Must
+Issue Stock
+Issue stock
+Store Keeper
+/stock/issue
+Must
+Reports
+Analyze stock
+Management
+/reports
+Must
+
+19. Create the Sitemap in Draw.io
+Open Draw.io and create:
+03-UI-UX-Design/03-Information-Architecture/sitemap.drawio
+Start with:
+             ASTU Stock Management
+                      │
+       ┌──────────────┼───────────────┐
+       ↓              ↓               ↓
+ Authentication   Dashboard       Application
+       │                              │
+     Login             ┌──────────────┼───────────────┐
+                       ↓              ↓               ↓
+                   Inventory       Stock          Reports
+Then expand it.
+Don't worry about making it beautiful.
+Correct structure is more important than visual appearance at this stage.
+
+20. Sprint 2 Progress
+We're making good progress:
+Day
+Activity
+Deliverable
+Status
+Day 1
+UX Design Brief
+UX Design Brief
+✅
+Day 2
+User Flows
+User Flow Diagrams
+✅
+Day 3
+Information Architecture
+Sitemap + Page Inventory
+🟢
+Day 4
+Wireframes
+Low-Fidelity UI
+⏳
+Day 5
+Design System
+UI Design System
+⏳
+Day 6
+High-Fidelity UI
+Final Screens
+⏳
+Day 7
+Prototype & Review
+Interactive Prototype
+⏳
+
+🎯 The Big Picture You're Learning
+This is the real value of this personal project.
+You aren't simply learning Figma.
+You're learning how one decision flows through the entire SDLC:
+USER PROBLEM
+     ↓
+REQUIREMENT
+     ↓
+UX GOAL
+     ↓
+USER FLOW
+     ↓
+INFORMATION ARCHITECTURE
+     ↓
+WIREFRAME
+     ↓
+UI DESIGN
+     ↓
+SOFTWARE ARCHITECTURE
+     ↓
+CODE
+     ↓
+TEST
+     ↓
+DEPLOY
+For example:
+Problem:
+Store Keeper cannot easily track stock.
+
+        ↓
+
+Requirement:
+System must allow stock tracking.
+
+        ↓
+
+User Flow:
+Dashboard → Inventory → Item Details
+
+        ↓
+
+Information Architecture:
+Inventory
+ ├── Items
+ ├── Categories
+ └── Item Details
+
+        ↓
+
+Wireframe:
+Inventory table + search + filters
+
+        ↓
+
+UI:
+Final visual design
+
+        ↓
+
+Development:
+React + Node.js + MongoDB
+
+        ↓
+
+Testing:
+Verify stock quantities and transactions
+
+        ↓
+
+Deployment:
+Docker + server
+

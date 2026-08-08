@@ -1,0 +1,794 @@
+﻿🚀 Sprint 2 — Day 4: Wireframing
+Excellent. We have completed:
+    • ✅ Day 1 — UX Design Brief 
+    • ✅ Day 2 — User Flows 
+    • ✅ Day 3 — Information Architecture & Sitemap 
+    • 🟢 Day 4 — Wireframing 
+Today we finally start drawing the screens.
+But there is an important rule:
+Today we don't care about beautiful colors, logos, shadows, or animations.
+We're designing the structure and usability first.
+
+1. What is a Wireframe?
+A wireframe is a simple visual blueprint of a screen.
+Think of it like the architectural plan of a building.
+Before constructing a house, an architect doesn't start by choosing curtains.
+First:
+Where is the entrance?
+Where are the rooms?
+Where are the doors?
+Where are the windows?
+Similarly, before designing the final UI:
+Where is the sidebar?
+Where is the search?
+Where is the table?
+Where is the Add button?
+Where are the filters?
+Where are the actions?
+That's wireframing.
+
+2. Where Are We in the SDLC?
+Look at what we've done:
+Requirement Analysis
+       ↓
+     SRS
+       ↓
+UX Design Brief
+       ↓
+User Flows
+       ↓
+Information Architecture
+       ↓
+ WIREFRAMES ← TODAY
+       ↓
+Design System
+       ↓
+High-Fidelity UI
+       ↓
+Development
+Notice that we're not jumping directly from requirements to React code.
+That's exactly what your advisor meant when he said to follow a modern SDLC.
+
+3. Why Do We Need Wireframes?
+Suppose we immediately create a beautiful dashboard:
+🎨 Colors
+✨ Gradients
+ Icons
+ Shadows
+Then we discover:
+"The Store Keeper actually needs quick access to Receive Stock."
+We have to redesign everything.
+Wireframes allow us to discover problems cheaply.
+Wireframe:
+5 minutes to change
+Final UI:
+30+ minutes to change
+Developed application:
+Much more expensive to change
+Therefore:
+Find design problems before coding.
+That's the main purpose.
+
+4. Low-Fidelity vs High-Fidelity
+Today we're doing Low-Fidelity Wireframes.
+Low-Fidelity
+Simple:
+┌─────────────────────────────┐
+│ Header                      │
+├─────────┬───────────────────┤
+│ Sidebar │ Dashboard         │
+│         │                   │
+│         │ [Card] [Card]     │
+│         │                   │
+│         │ [Table]           │
+└─────────┴───────────────────┘
+No colors.
+No polished typography.
+No fancy icons.
+High-Fidelity
+Later:
+┌─────────────────────────────┐
+│ ASTU Stock Management       │
+├─────────┬───────────────────┤
+│ 🏠 Home │ Welcome, Store... │
+│ 📦 Inv. │                   │
+│ 🔄 Stock│ Total Items  450  │
+│ 📊 Rep. │ Low Stock     12  │
+│         │                   │
+│         │ Recent Activity   │
+└─────────┴───────────────────┘
+Colors, typography, spacing, icons, etc.
+That's Day 6.
+
+5. Tool: Figma
+Today I recommend using Figma.
+Why?
+Because Figma lets us:
+    • Create frames 
+    • Draw wireframes 
+    • Create components 
+    • Collaborate 
+    • Prototype later 
+    • Share designs 
+    • Get feedback 
+    • Maintain a design system 
+You don't need to master all of Figma today.
+We only need the basics.
+
+6. Create Your Day 4 Folder
+Our structure becomes:
+03-UI-UX-Design/
+│
+├── 01-UX-Design-Brief.md
+│
+├── 02-User-Flows/
+│
+├── 03-Information-Architecture/
+│   ├── sitemap.drawio
+│   └── page-inventory.md
+│
+└── 04-Wireframes/
+Why create 04-Wireframes?
+Because wireframes are a separate design artifact.
+We don't want:
+SRS
+User Flows
+Wireframes
+Final UI
+Requirements
+all mixed together.
+Instead:
+UX Design
+│
+├── Brief
+├── User Flows
+├── Information Architecture
+└── Wireframes
+This makes your SDLC documentation easy to follow.
+
+7. What Screens Should We Wireframe?
+We don't need to wireframe every tiny screen today.
+We'll prioritize the important ones.
+Priority 1 — Core screens
+    1. Login 
+    2. Dashboard 
+    3. Inventory List 
+    4. Add Inventory 
+    5. Receive Stock 
+    6. Issue Stock 
+    7. Stock History 
+Priority 2
+    8. Supplier List 
+    9. Reports 
+    10. User Management 
+Today we'll focus on the first 7.
+
+8. Wireframe 1 — Login
+Let's start simple.
+User Flow
+From Day 2:
+Open Login
+    ↓
+Enter credentials
+    ↓
+Validate
+    ↓
+Dashboard
+Wireframe
+┌──────────────────────────────────────────┐
+│                                          │
+│              ASTU STOCK                  │
+│          MANAGEMENT SYSTEM               │
+│                                          │
+│        ┌──────────────────────┐          │
+│        │ Email                │          │
+│        └──────────────────────┘          │
+│                                          │
+│        ┌──────────────────────┐          │
+│        │ Password             │          │
+│        └──────────────────────┘          │
+│                                          │
+│        [        Login         ]           │
+│                                          │
+│             Forgot Password?             │
+│                                          │
+└──────────────────────────────────────────┘
+Important UX decisions
+We need:
+    • Clear labels 
+    • Easy-to-find Login button 
+    • Password visibility option later 
+    • Clear error messages 
+    • Keyboard-friendly form 
+
+9. Wireframe 2 — Main Application Layout
+Before designing individual pages, we need a shared layout.
+┌──────────────────────────────────────────────────────┐
+│ ASTU Stock Management              🔔  User ▼        │
+├───────────────┬──────────────────────────────────────┤
+│               │                                      │
+│ Dashboard     │                                      │
+│               │                                      │
+│ Inventory     │             PAGE CONTENT             │
+│               │                                      │
+│ Stock         │                                      │
+│               │                                      │
+│ Suppliers     │                                      │
+│               │                                      │
+│ Reports       │                                      │
+│               │                                      │
+│ Users         │                                      │
+│               │                                      │
+│ Settings      │                                      │
+│               │                                      │
+│ Logout        │                                      │
+│               │                                      │
+└───────────────┴──────────────────────────────────────┘
+This is extremely important.
+We are defining the application shell.
+Most pages will reuse:
+Header
++
+Sidebar
++
+Main Content
+
+10. Why is a Shared Layout Important?
+Imagine every page has completely different navigation.
+Bad:
+Dashboard → sidebar left
+
+Inventory → menu at top
+
+Reports → menu right
+
+Suppliers → no navigation
+Very confusing.
+Instead:
+┌─────────┬────────────────┐
+│ Sidebar │ Main Content   │
+└─────────┴────────────────┘
+is consistent.
+Later in React, this can become something like:
+AppLayout
+├── Sidebar
+├── Header
+└── MainContent
+Notice the connection:
+Wireframe
+   ↓
+UI Component
+   ↓
+React Component
+We are already thinking about development without writing code yet.
+
+11. Wireframe 3 — Dashboard
+Now we ask:
+What information does the Store Keeper need immediately?
+From our UX Design Brief:
+    • Total items 
+    • Stock status 
+    • Low-stock items 
+    • Recent transactions 
+    • Quick actions 
+Therefore:
+┌──────────────────────────────────────────────────────┐
+│ Dashboard                                             │
+├───────────────┬──────────────────────────────────────┤
+│ Sidebar       │                                      │
+│               │ Dashboard                            │
+│               │                                      │
+│               │ ┌────────┐ ┌────────┐ ┌────────┐   │
+│               │ │ Total  │ │ Total  │ │  Low   │   │
+│               │ │ Items  │ │ Stock  │ │ Stock  │   │
+│               │ │  450   │ │  3,250 │ │   12   │   │
+│               │ └────────┘ └────────┘ └────────┘   │
+│               │                                      │
+│               │ Quick Actions                        │
+│               │ [Add Item] [Receive] [Issue]        │
+│               │                                      │
+│               │ Low Stock Items                      │
+│               │ ┌─────────────────────────────────┐ │
+│               │ │ Item       │ Available │ Status │ │
+│               │ │ Paper      │ 5         │ Low    │ │
+│               │ │ Pen        │ 8         │ Low    │ │
+│               │ └─────────────────────────────────┘ │
+│               │                                      │
+│               │ Recent Transactions                  │
+│               │ ┌─────────────────────────────────┐ │
+│               │ │ Item │ Type │ Qty │ Date        │ │
+│               │ └─────────────────────────────────┘ │
+└───────────────┴──────────────────────────────────────┘
+Notice that we're not worrying about colors.
+We're asking:
+Does this information make sense to the Store Keeper?
+
+12. Dashboard UX Decision
+The dashboard should answer these questions quickly:
+Question 1
+How much inventory do we have?
+Total Items
+450
+Question 2
+Is anything running low?
+Low Stock
+12
+Question 3
+What happened recently?
+Recent Transactions
+Question 4
+What do I want to do?
+[Add Item]
+[Receive Stock]
+[Issue Stock]
+That's good UX because we're designing around user questions, not around random UI elements.
+
+13. Wireframe 4 — Inventory List
+The Store Keeper needs to find items.
+┌──────────────────────────────────────────────────────┐
+│ Inventory                                            │
+├───────────────┬──────────────────────────────────────┤
+│ Sidebar       │ Inventory                            │
+│               │                                      │
+│               │ [ Search items... ]  [Filter ▼]     │
+│               │                                      │
+│               │ [+ Add Item]                         │
+│               │                                      │
+│               │ ┌─────────────────────────────────┐ │
+│               │ │ ID │ Item │ Category │ Qty │ ...│ │
+│               │ ├─────────────────────────────────┤ │
+│               │ │ 01 │ Paper│ Office   │ 100 │... │ │
+│               │ │ 02 │ Pen  │ Office   │ 250 │... │ │
+│               │ │ 03 │ Chair│ Furniture│ 20 │... │ │
+│               │ └─────────────────────────────────┘ │
+│               │                                      │
+│               │              [1] [2] [3] →           │
+└───────────────┴──────────────────────────────────────┘
+
+14. Important Inventory Features
+Our wireframe includes:
+Search
+[ Search items... ]
+Filter
+[ Category ▼ ]
+Add
+[ + Add Item ]
+Table
+Shows:
+    • Item ID 
+    • Item Name 
+    • Category 
+    • Quantity 
+    • Status 
+    • Actions 
+Pagination
+Useful when there are many items.
+
+15. Wireframe 5 — Add Inventory
+From our Day 2 User Flow:
+Inventory
+ ↓
+Add Item
+ ↓
+Enter information
+ ↓
+Validate
+ ↓
+Save
+Wireframe:
+┌─────────────────────────────────────────────┐
+│ Add Inventory Item                          │
+├─────────────────────────────────────────────┤
+│                                             │
+│ Item Name                                   │
+│ [____________________________________]      │
+│                                             │
+│ Item Code                                   │
+│ [____________________________________]      │
+│                                             │
+│ Category                                    │
+│ [ Select Category ▼ ]                       │
+│                                             │
+│ Unit                                        │
+│ [ Select Unit ▼ ]                           │
+│                                             │
+│ Minimum Stock Level                         │
+│ [______________]                            │
+│                                             │
+│ Description                                 │
+│ [____________________________________]      │
+│ [____________________________________]      │
+│                                             │
+│ [Cancel]                    [Save Item]      │
+└─────────────────────────────────────────────┘
+Notice the Cancel button.
+Why?
+Because the user may change their mind.
+This is the same principle you learned earlier in your Student Management System project:
+User control and recovery.
+
+16. Wireframe 6 — Receive Stock
+This is one of our most important screens.
+┌─────────────────────────────────────────────┐
+│ Receive Stock                               │
+├─────────────────────────────────────────────┤
+│                                             │
+│ Item                                        │
+│ [ Select Item ▼ ]                           │
+│                                             │
+│ Supplier                                    │
+│ [ Select Supplier ▼ ]                       │
+│                                             │
+│ Quantity                                    │
+│ [______________]                            │
+│                                             │
+│ Receiving Date                              │
+│ [______________]                            │
+│                                             │
+│ Reference Number                            │
+│ [______________]                            │
+│                                             │
+│ Notes                                       │
+│ [____________________________________]      │
+│                                             │
+│ [Cancel]              [Receive Stock]       │
+└─────────────────────────────────────────────┘
+
+17. Wireframe 7 — Issue Stock
+This screen has an important business rule.
+┌─────────────────────────────────────────────┐
+│ Issue Stock                                 │
+├─────────────────────────────────────────────┤
+│                                             │
+│ Item                                        │
+│ [ Printer Paper ▼ ]                         │
+│                                             │
+│ Available Stock: 150                        │
+│                                             │
+│ Quantity                                    │
+│ [______________]                            │
+│                                             │
+│ Department                                  │
+│ [ CSE ▼ ]                                   │
+│                                             │
+│ Recipient                                   │
+│ [______________]                            │
+│                                             │
+│ Purpose                                     │
+│ [____________________________________]      │
+│                                             │
+│ [Cancel]                 [Issue Stock]      │
+└─────────────────────────────────────────────┘
+
+18. Important UX State
+Suppose:
+Available Stock = 150
+User enters:
+Quantity = 200
+Our wireframe should account for the validation state:
+Quantity
+[ 200 ]
+
+⚠ Only 150 items are available.
+
+[Issue Stock]
+Later we can decide whether the button becomes disabled.
+The important thing today is:
+We identified the state that the UI needs to support.
+
+19. Wireframe 8 — Stock History
+The Store Keeper needs to know what happened.
+┌──────────────────────────────────────────────────────┐
+│ Stock History                                        │
+├───────────────┬──────────────────────────────────────┤
+│ Sidebar       │ Stock History                        │
+│               │                                      │
+│               │ [Search] [Type ▼] [Date ▼]          │
+│               │                                      │
+│               │ ┌─────────────────────────────────┐ │
+│               │ │ Date │ Item │ Type │ Qty │ User │ │
+│               │ ├─────────────────────────────────┤ │
+│               │ │ 8/1  │ Paper│ IN   │ 100 │ John │ │
+│               │ │ 8/2  │ Paper│ OUT  │ 20  │ Sara │ │
+│               │ │ 8/3  │ Pen  │ IN   │ 200 │ John │ │
+│               │ └─────────────────────────────────┘ │
+└───────────────┴──────────────────────────────────────┘
+This is an example of traceability.
+
+20. Wireframe 9 — Reports
+We can keep the first version simple:
+┌──────────────────────────────────────────────────────┐
+│ Reports                                              │
+├───────────────┬──────────────────────────────────────┤
+│ Sidebar       │ Reports                              │
+│               │                                      │
+│               │ Select Report                        │
+│               │ [ Inventory Report ▼ ]               │
+│               │                                      │
+│               │ Date Range                           │
+│               │ [ From ]       [ To ]                │
+│               │                                      │
+│               │ [Generate Report]                    │
+│               │                                      │
+│               │ ┌─────────────────────────────────┐ │
+│               │ │ Report Results                   │ │
+│               │ │                                 │ │
+│               │ │ ...                             │ │
+│               │ └─────────────────────────────────┘ │
+│               │                                      │
+│               │ [Export] [Print]                     │
+└───────────────┴──────────────────────────────────────┘
+
+21. What About Mobile?
+Good question to think about now.
+Desktop:
+Sidebar | Content
+On smaller screens, we might eventually use:
+┌───────────────────────┐
+│ ☰ ASTU Stock          │
+├───────────────────────┤
+│                       │
+│ Content               │
+│                       │
+└───────────────────────┘
+The sidebar can collapse into a menu.
+But don't spend too much time on responsive design today.
+We'll refine it during high-fidelity UI.
+
+22. Wireframe Components
+Look carefully at our screens.
+Many elements repeat:
+Sidebar
+Header
+Search
+Button
+Table
+Form
+Dropdown
+Card
+Modal
+Pagination
+Alert
+This is extremely important.
+We don't want to design each one independently.
+Later, during Day 5 — Design System, we'll define reusable components.
+For example:
+Button
+├── Primary
+├── Secondary
+├── Danger
+└── Disabled
+
+Input
+├── Default
+├── Focus
+├── Error
+└── Disabled
+Then React development becomes easier because we can build reusable components.
+
+23. Wireframe → React Connection
+This is another major lesson.
+Today:
+Figma Wireframe
+
+┌───────────────┐
+│ Search        │
+└───────────────┘
+Later:
+React
+
+<SearchInput />
+Today:
+┌──────────────┐
+│ [Save Item]  │
+└──────────────┘
+Later:
+<Button>
+  Save Item
+</Button>
+Today:
+┌───────────────────────┐
+│ Item │ Qty │ Status   │
+└───────────────────────┘
+Later:
+<InventoryTable />
+This is why wireframing isn't just "drawing."
+It helps us identify reusable software components.
+
+24. Create the Day 4 Folder
+Your structure now becomes:
+03-UI-UX-Design/
+│
+├── 01-UX-Design-Brief.md
+│
+├── 02-User-Flows/
+│
+├── 03-Information-Architecture/
+│   ├── sitemap.drawio
+│   └── page-inventory.md
+│
+└── 04-Wireframes/
+    ├── 01-Login
+    ├── 02-Application-Layout
+    ├── 03-Dashboard
+    ├── 04-Inventory
+    ├── 05-Add-Inventory
+    ├── 06-Receive-Stock
+    ├── 07-Issue-Stock
+    ├── 08-Stock-History
+    └── 09-Reports
+Why?
+Each folder represents a screen/design artifact.
+This solves:
+"Where is the design for this page?"
+You can find it immediately.
+
+25. Your Figma File
+Create a Figma project named:
+ASTU Stock Management System — UX/UI
+Then create pages:
+ASTU Stock Management System — UX/UI
+│
+├── 📄 01-Wireframes
+├── 📄 02-Design-System
+├── 📄 03-High-Fidelity
+└── 📄 04-Prototype
+Today, work only inside:
+01-Wireframes
+Don't start designing the final UI yet.
+
+26. What You Should Actually Do Today
+Don't just copy my diagrams.
+Task 1
+Create the Application Layout.
+Sidebar + Header + Main Content
+Task 2
+Create the Dashboard wireframe.
+Include:
+    • Total Items 
+    • Total Stock 
+    • Low Stock 
+    • Quick Actions 
+    • Low Stock Table 
+    • Recent Transactions 
+Task 3
+Create the Inventory List.
+Include:
+    • Search 
+    • Filter 
+    • Add Item 
+    • Table 
+    • Actions 
+    • Pagination 
+Task 4
+Create:
+Add Item
+Task 5
+Create:
+Receive Stock
+Task 6
+Create:
+Issue Stock
+Task 7
+Create:
+Stock History
+
+27. Don't Use AI to Design Everything
+You can use AI as a design reviewer.
+For example, after creating your Dashboard in Figma, ask:
+"Act as a UX designer. Review this ASTU Stock Management dashboard. Identify usability problems, missing information, confusing navigation, accessibility issues, and unnecessary elements. Do not redesign it; only give me constructive feedback."
+That's a much better learning exercise than:
+"AI, design my whole dashboard."
+Because you want to learn how designers think.
+
+28. Day 4 Deliverable
+At the end of today:
+03-UI-UX-Design/
+│
+├── 01-UX-Design-Brief.md
+│
+├── 02-User-Flows/
+│
+├── 03-Information-Architecture/
+│
+└── 04-Wireframes/
+And your Figma file should contain:
+01-Wireframes
+│
+├── Login
+├── Application Layout
+├── Dashboard
+├── Inventory
+├── Add Item
+├── Receive Stock
+├── Issue Stock
+├── Stock History
+└── Reports
+
+29. Sprint 2 Progress
+Day
+Activity
+Deliverable
+Status
+Day 1
+UX Design Brief
+UX Design Brief
+✅
+Day 2
+User Flows
+User Flow Diagrams
+✅
+Day 3
+Information Architecture
+Sitemap + Page Inventory
+✅
+Day 4
+Wireframing
+Low-Fidelity Screens
+🟢
+Day 5
+Design System
+Colors, Typography, Components
+⏳
+Day 6
+High-Fidelity UI
+Final UI Screens
+⏳
+Day 7
+Prototype & Review
+Interactive Prototype + Review
+⏳
+
+🧠 The most important lesson from Day 4
+You are now seeing how requirements become interfaces:
+Requirement
+    ↓
+User Goal
+    ↓
+User Flow
+    ↓
+Information Architecture
+    ↓
+Wireframe        ← TODAY
+    ↓
+Design System
+    ↓
+High-Fidelity UI
+    ↓
+React Components
+For example:
+Requirement:
+Store Keeper must receive stock.
+
+        ↓
+
+User Flow:
+Dashboard
+ → Receive Stock
+ → Select Item
+ → Enter Quantity
+ → Confirm
+
+        ↓
+
+IA:
+Stock Management
+ → Receive Stock
+
+        ↓
+
+Wireframe:
+Receive Stock Form
+
+        ↓
+
+Tomorrow:
+Design System
+
+        ↓
+
+Later:
+React
+
+<ReceiveStockForm />
+

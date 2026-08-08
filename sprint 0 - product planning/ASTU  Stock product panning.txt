@@ -1,0 +1,1354 @@
+﻿
+ASTU Stock Management System
+        Product Planning Handbook
+        Author: Megersa Tekalign Senbeta
+
+                                                       Version: 1.0
+                   Project: EthioBiz OS
+
+               Document Status: Draft
+           Last Updated: August 2026
+              
+
+                                              Chapter – 1
+                         Introduction
+1.1 Purpose of the Document
+This document presents the product planning for the ASTU Stock Management System. It serves as the foundation of the project by explaining the purpose of the system, the business problem it addresses, and the overall direction of development.
+The handbook is intended to guide the project team throughout the Software Development Life Cycle (SDLC), from planning to deployment and maintenance.
+1.2 Project Overview
+The ASTU Stock Management System is a web-based application designed to help Adama Science and Technology University (ASTU) manage its inventory efficiently.
+The system will allow authorized users to record, monitor, and manage stock items through a centralized digital platform. It will replace manual inventory management with a secure and user-friendly solution.
+The project will be developed using modern software engineering practices, including the Software Development Life Cycle (SDLC) and Agile methodology.
+1.3 Business Background
+Inventory management is an essential activity in every organization. Universities purchase and distribute many types of items such as laboratory equipment, office supplies, furniture, computers, and other assets.
+When inventory is managed manually using paper records or spreadsheets, several problems may occur, including inaccurate records, delays in reporting, and difficulty tracking stock movement.
+A digital stock management system can improve efficiency, reduce errors, and provide accurate information for decision-making.
+1.4 Existing Problem
+The current inventory management process may experience the following challenges:
+    • Manual recording of stock information. 
+    • Difficulty tracking available inventory. 
+    • Time-consuming searching for stock records. 
+    • Human errors during data entry. 
+    • Delayed report generation. 
+    • Limited transparency in stock movement. 
+    • Difficulty monitoring issued and received items. 
+These challenges reduce operational efficiency and increase the risk of inventory inaccuracies.
+
+1.5 Proposed Solution
+The proposed solution is to develop a web-based Stock Management System that enables users to manage inventory digitally.
+The system will provide features such as:
+    • User authentication and authorization. 
+    • Inventory management. 
+    • Stock receiving. 
+    • Stock issuing. 
+    • Category management. 
+    • Supplier management. 
+    • Search functionality. 
+    • Dashboard with summary statistics. 
+    • Report generation. 
+    • User management. 
+The system will provide real-time access to inventory information and simplify daily operations.
+
+1.6 Expected Benefits
+The proposed system is expected to provide the following benefits:
+For ASTU
+    • Improve inventory accuracy. 
+    • Reduce paperwork. 
+    • Increase operational efficiency. 
+    • Improve transparency. 
+    • Generate reports quickly. 
+    • Support better decision-making. 
+For Users
+    • Easy access to inventory information. 
+    • Faster stock searching. 
+    • Simplified inventory management. 
+    • Reduced manual work. 
+For Developers
+    • Gain practical experience in modern software development. 
+    • Apply Agile methodology. 
+    • Practice Git and GitHub collaboration. 
+    • Learn Docker-based deployment. 
+    • Experience the complete Software Development Life Cycle. 
+
+1.7 Project Objectives
+The main objectives of the project are:
+    • Develop a secure web-based stock management system. 
+    • Digitize inventory management processes. 
+    • Improve stock tracking and reporting. 
+    • Reduce manual record keeping. 
+    • Build the project using modern technologies. 
+    • Follow Agile development practices. 
+    • Deploy the application using Docker and cloud hosting. 
+
+1.8 Development Methodology
+The project will follow the Software Development Life Cycle (SDLC) using an Agile approach.
+The major phases include:
+    1. Product Planning 
+    2. Requirement Analysis 
+    3. UI/UX Design 
+    4. Software Analysis and Design (SAD) 
+    5. Development Environment Setup 
+    6. Backend Development 
+    7. Frontend Development 
+    8. Integration 
+    9. Testing 
+    10. Dockerization 
+    11. Deployment 
+    12. Documentation 
+    13. Maintenance 
+Each phase will produce specific deliverables before moving to the next phase.
+
+1.9 Document Organization
+This handbook is organized into the following chapters:
+    • Chapter 1: Introduction 
+    • Chapter 2: Product Vision 
+    • Chapter 3: Project Charter 
+    • Chapter 4: Stakeholder Analysis 
+    • Chapter 5: User Research 
+Each chapter builds upon the previous one to create a complete product planning document for the ASTU Stock Management System.
+Chapter 2
+Product Vision
+
+2.1 Introduction
+A product vision describes the future state of the product and explains why it is being developed. It provides a clear direction for the development team and ensures that everyone shares the same understanding of the project's purpose.
+The Product Vision serves as a guide throughout the Software Development Life Cycle (SDLC) and helps the team make decisions that align with the project's goals.
+
+2.2 Vision Statement
+To develop a modern, secure, and user-friendly web-based Stock Management System that enables Adama Science and Technology University (ASTU) to efficiently manage inventory, improve transparency, reduce manual work, and support effective decision-making through accurate and real-time information.
+
+2.3 Mission Statement
+The mission of the ASTU Stock Management System is to replace manual inventory management with a reliable digital solution that simplifies stock management, improves operational efficiency, and provides accurate information for university departments.
+
+2.4 Product Values
+The development of the system is guided by the following values:
+    • Simplicity 
+    • Reliability 
+    • Accuracy 
+    • Security 
+    • Transparency 
+    • Scalability 
+    • Usability 
+    • Maintainability 
+These values ensure that the system remains useful for both users and developers.
+
+2.5 Long-Term Vision
+The long-term vision of the project is to build a complete inventory management platform that can support not only ASTU but also other educational institutions with minimal modifications.
+Future versions may include:
+    • Barcode and QR Code support 
+    • Mobile application 
+    • Email and SMS notifications 
+    • Analytics dashboard 
+    • Multi-campus inventory management 
+    • Asset tracking 
+    • AI-assisted inventory forecasting 
+
+2.6 Business Value
+The system is expected to provide the following business value:
+    • Reduce manual paperwork 
+    • Improve inventory accuracy 
+    • Save employees' time 
+    • Improve accountability 
+    • Support faster decision-making 
+    • Reduce operational costs 
+    • Improve report generation 
+
+2.7 Product Goals
+The primary goals of the project are:
+    • Develop a secure inventory management system. 
+    • Improve stock tracking. 
+    • Digitize inventory records. 
+    • Simplify inventory operations. 
+    • Generate accurate reports. 
+    • Build the system using modern software engineering practices. 
+
+Chapter Summary
+This chapter presented the vision, mission, values, long-term direction, business value, and goals of the ASTU Stock Management System. These elements provide a shared understanding of what the project aims to achieve and guide future development activities.
+
+Chapter 3
+Project Charter
+
+3.1 Introduction
+The Project Charter is a formal document that defines the project's purpose, objectives, scope, stakeholders, and expected outcomes. It serves as an agreement among project participants and provides an official starting point for the project.
+
+3.2 Project Name
+ASTU Stock Management System
+
+3.3 Project Background
+Adama Science and Technology University manages a large quantity of inventory, including office supplies, laboratory equipment, furniture, computers, and other institutional assets.
+Manual inventory management increases the possibility of errors, delays, and inaccurate reporting. Therefore, a modern web-based solution is needed to improve efficiency and transparency.
+
+3.4 Problem Statement
+The current inventory management process faces several challenges:
+    • Manual record keeping. 
+    • Difficulty tracking stock availability. 
+    • Delayed reporting. 
+    • Human errors. 
+    • Limited visibility of inventory movement. 
+    • Time-consuming searches. 
+    • Poor accountability. 
+These challenges reduce operational efficiency and increase the risk of inaccurate inventory information.
+
+3.5 Proposed Solution
+Develop a web-based Stock Management System that allows authorized users to:
+    • Manage inventory items. 
+    • Record received stock. 
+    • Record issued stock. 
+    • Manage suppliers. 
+    • Generate reports. 
+    • Search inventory. 
+    • Monitor stock availability. 
+    • Manage users and permissions. 
+
+3.6 Project Objectives
+Business Objectives
+    • Improve inventory accuracy. 
+    • Reduce paperwork. 
+    • Increase efficiency. 
+    • Improve reporting. 
+    • Increase transparency. 
+Technical Objectives
+    • Develop the system using the MERN Stack. 
+    • Apply Agile methodology. 
+    • Use Git and GitHub for version control. 
+    • Containerize the application using Docker. 
+    • Deploy the system online. 
+
+3.7 Project Scope
+In Scope
+    • User authentication 
+    • Dashboard 
+    • Inventory management 
+    • Category management 
+    • Supplier management 
+    • Receive stock 
+    • Issue stock 
+    • Reports 
+    • User management 
+Out of Scope
+    • Mobile application 
+    • Online payment 
+    • AI prediction 
+    • Barcode integration (Version 1) 
+    • Multi-campus support 
+
+3.8 Assumptions
+The project assumes that:
+    • Users have internet access. 
+    • Users receive basic system training. 
+    • MongoDB Atlas is available. 
+    • Development tools are properly installed. 
+
+3.9 Constraints
+The project may be affected by:
+    • Internship duration. 
+    • Limited budget. 
+    • Changing requirements. 
+    • Team experience. 
+    • Internet availability. 
+
+3.10 Success Criteria
+The project will be considered successful if:
+    • Inventory can be managed digitally. 
+    • Reports are generated correctly. 
+    • Users can authenticate securely. 
+    • Data is stored accurately. 
+    • The system is successfully deployed. 
+    • The software satisfies the agreed requirements. 
+
+Chapter Summary
+This chapter formally introduced the project, described the problem it addresses, defined its objectives and scope, and identified the assumptions, constraints, and success criteria that will guide the project throughout its lifecycle.
+
+Chapter 4
+Stakeholder Analysis
+
+4.1 Introduction
+Every software system is developed for people. These people are called stakeholders because they have an interest in the success of the project.
+Understanding stakeholders helps the development team identify user needs, define system requirements, and ensure that the final product meets organizational expectations.
+
+4.2 Stakeholder Identification
+The ASTU Stock Management System involves both internal and external stakeholders.
+Internal Stakeholders
+    • Store Keeper 
+    • Procurement Office 
+    • Finance Office 
+    • Department Staff 
+    • ICT Center 
+    • University Management 
+    • System Administrator 
+External Stakeholders
+    • Software Development Team 
+    • Software Maintenance Team 
+    • External Suppliers (if supplier information is maintained) 
+
+4.3 Stakeholder Roles
+Stakeholder
+Responsibility
+Store Keeper
+Manage inventory, receive stock, issue stock
+Procurement Office
+Purchase inventory items
+Department Staff
+Request inventory items
+Finance Office
+Monitor inventory value and reports
+ICT Center
+System maintenance and technical support
+University Management
+Review reports and make decisions
+System Administrator
+Manage users, permissions, and security
+Development Team
+Design, develop, test, and maintain the system
+
+4.4 Stakeholder Interests
+Each stakeholder has different expectations from the system.
+For example:
+    • Store Keeper expects fast inventory management. 
+    • Finance Office expects accurate reports. 
+    • ICT Center expects a secure and maintainable system. 
+    • University Management expects reliable information for decision-making. 
+Understanding these interests helps prioritize system features.
+
+4.5 Stakeholder Influence
+Some stakeholders have greater influence over the project than others.
+Stakeholder
+Influence Level
+University Management
+High
+ICT Center
+High
+System Administrator
+High
+Store Keeper
+High
+Procurement Office
+Medium
+Finance Office
+Medium
+Department Staff
+Medium
+Development Team
+High
+Stakeholders with high influence should be consulted regularly during the project.
+
+4.6 Communication Plan
+Effective communication is essential for project success.
+Stakeholder
+Communication Method
+Frequency
+Store Keeper
+Meetings
+Weekly
+ICT Center
+Meetings and Reports
+Weekly
+University Management
+Progress Reports
+Monthly
+Development Team
+Daily Stand-up Meetings
+Daily
+Procurement Office
+Meetings
+When Required
+
+4.7 Importance of Stakeholder Analysis
+Stakeholder analysis helps to:
+    • Understand user expectations. 
+    • Improve communication. 
+    • Reduce misunderstandings. 
+    • Prioritize requirements. 
+    • Increase project success. 
+    • Improve user satisfaction. 
+
+Chapter Summary
+This chapter identified the stakeholders involved in the ASTU Stock Management System, described their roles, interests, influence, and communication methods. Understanding stakeholders provides the foundation for gathering accurate requirements and designing a system that meets the needs of all users.
+Chapter 5
+User Research
+5.1 Introduction
+User research is the process of understanding the people who will use the ASTU Stock Management System, their responsibilities, their problems, and their expectations.
+The purpose of user research is to ensure that the system is designed around real user needs rather than assumptions made by developers.
+
+5.2 Target Users
+The main users of the system are:
+    • Store Keeper 
+    • Department Staff 
+    • Procurement Officer 
+    • Finance Officer 
+    • System Administrator 
+    • University Management 
+
+5.3 User Personas
+Persona 1: Store Keeper
+Role: Manages university stock.
+Responsibilities:
+    • Receive stock. 
+    • Issue stock. 
+    • Monitor available stock. 
+    • Record stock movement. 
+    • Prepare inventory reports. 
+Pain Points:
+    • Manual record keeping. 
+    • Difficulty finding records. 
+    • Calculation errors. 
+    • Time-consuming report preparation. 
+Goals:
+    • Quickly find stock information. 
+    • Record transactions accurately. 
+    • Know current stock levels. 
+    • Generate reports easily. 
+
+Persona 2: Department Staff
+Role: Requests items from the store.
+Responsibilities:
+    • Submit stock requests. 
+    • Receive requested items. 
+    • Check request status. 
+Pain Points:
+    • Difficulty knowing request status. 
+    • Delayed communication. 
+    • Lack of visibility of available items. 
+Goals:
+    • Easily request items. 
+    • Track requests. 
+    • Receive timely information. 
+
+Persona 3: System Administrator
+Role: Manages the system.
+Responsibilities:
+    • Create users. 
+    • Manage roles. 
+    • Manage permissions. 
+    • Monitor system activity. 
+Goals:
+    • Maintain system security. 
+    • Control user access. 
+    • Keep the system reliable. 
+
+5.4 User Needs
+Users need a system that provides:
+    • Easy login. 
+    • Simple navigation. 
+    • Accurate stock information. 
+    • Fast searching. 
+    • Easy stock receiving and issuing. 
+    • Reports. 
+    • Secure access. 
+    • Clear error messages. 
+
+5.5 User Pain Points
+The main pain points are:
+    • Manual work. 
+    • Duplicate records. 
+    • Data entry errors. 
+    • Difficult stock tracking. 
+    • Delayed reports. 
+    • Lack of real-time information. 
+
+5.6 User Expectations
+Users expect the system to be:
+    • Easy to use. 
+    • Fast. 
+    • Secure. 
+    • Reliable. 
+    • Accurate. 
+    • Available when needed. 
+
+5.7 Chapter Summary
+User research helps the development team understand users, their responsibilities, problems, goals, and expectations. These findings will later be converted into detailed software requirements.
+
+Chapter 6
+Competitor Analysis
+6.1 Introduction
+Competitor analysis involves studying existing inventory management solutions to understand common features, strengths, weaknesses, and possible opportunities.
+The goal is not necessarily to copy existing systems but to learn from them and identify how our system can provide value.
+
+6.2 Existing Solutions
+Examples of inventory management solutions include:
+    • Odoo Inventory 
+    • ERPNext 
+    • Zoho Inventory 
+    • inFlow Inventory 
+These systems demonstrate common inventory management capabilities such as stock tracking, product management, reporting, and supplier management.
+
+6.3 Feature Comparison
+Feature
+Odoo
+ERPNext
+Zoho Inventory
+ASTU System
+Inventory Management
+✓
+✓
+✓
+✓
+Stock Receiving
+✓
+✓
+✓
+✓
+Stock Issuing
+✓
+✓
+✓
+✓
+Supplier Management
+✓
+✓
+✓
+✓
+Reports
+✓
+✓
+✓
+✓
+User Roles
+✓
+✓
+✓
+✓
+ASTU-specific Workflow
+—
+—
+—
+✓
+University-focused
+—
+—
+—
+✓
+
+6.4 Strengths of Existing Systems
+Existing systems may provide:
+    • Many features. 
+    • Mature functionality. 
+    • Professional interfaces. 
+    • Reporting. 
+    • Role management. 
+    • Integration capabilities. 
+
+6.5 Weaknesses and Opportunities
+Some general-purpose systems may be complex for an organization that only needs specific inventory workflows.
+The ASTU system can focus on:
+    • ASTU-specific requirements. 
+    • Simple user interfaces. 
+    • University inventory workflows. 
+    • Local organizational processes. 
+    • Easy training. 
+
+6.6 Chapter Summary
+Competitor analysis helps the project team understand existing solutions and identify opportunities to build a system appropriate for ASTU's specific needs.
+
+Chapter 7
+SWOT Analysis
+7.1 Introduction
+SWOT analysis evaluates the project's:
+    • Strengths 
+    • Weaknesses 
+    • Opportunities 
+    • Threats 
+
+7.2 Strengths
+    • Designed specifically for ASTU. 
+    • Modern web-based system. 
+    • Centralized inventory information. 
+    • Easier reporting. 
+    • Role-based access. 
+    • Designed using modern development practices. 
+
+7.3 Weaknesses
+    • New system with no long-term usage history. 
+    • Development team may have limited experience. 
+    • Initial version may have limited features. 
+    • Requires user training. 
+
+7.4 Opportunities
+    • Expansion to other ASTU departments. 
+    • Barcode and QR-code integration. 
+    • Mobile application. 
+    • Advanced analytics. 
+    • Integration with other university systems. 
+    • Possible adoption by other universities. 
+
+7.5 Threats
+    • Changing requirements. 
+    • Resistance to changing from manual processes. 
+    • Security threats. 
+    • Internet or infrastructure problems. 
+    • Limited project time. 
+    • Changes in university policies. 
+
+7.6 Chapter Summary
+SWOT analysis helps the project team understand internal capabilities and external factors that may affect project success.
+
+Chapter 8
+Product Scope
+8.1 Introduction
+Product scope defines what the system will and will not include.
+A clear scope prevents scope creep, where new requirements continuously enter the project and make it difficult to finish on time.
+
+8.2 In Scope
+The initial system will include:
+Authentication
+    • Login. 
+    • Logout. 
+    • User roles. 
+    • Access control. 
+Inventory
+    • Add items. 
+    • Edit items. 
+    • Delete items. 
+    • View items. 
+    • Search items. 
+    • Categorize items. 
+Stock Transactions
+    • Receive stock. 
+    • Issue stock. 
+    • Track stock movement. 
+    • Monitor stock levels. 
+Suppliers
+    • Add suppliers. 
+    • Edit suppliers. 
+    • View suppliers. 
+Reports
+    • Inventory reports. 
+    • Stock movement reports. 
+    • Stock level reports. 
+Dashboard
+    • Total items. 
+    • Available stock. 
+    • Low-stock items. 
+    • Recent transactions. 
+
+8.3 Out of Scope for Version 1
+The following will not be required in the first version:
+    • Mobile application. 
+    • AI forecasting. 
+    • Online payment. 
+    • Multi-campus support. 
+    • Advanced barcode integration. 
+    • Automatic procurement. 
+    • Integration with external ERP systems. 
+These features may be considered in future versions.
+
+8.4 Scope Boundary
+                 ASTU STOCK MANAGEMENT SYSTEM
+                           │
+        ┌──────────────────┴──────────────────┐
+        │                                     │
+     IN SCOPE                             OUT OF SCOPE
+        │                                     │
+ Inventory Management                    Mobile App
+ Stock Receiving                         AI Forecasting
+ Stock Issuing                           Online Payment
+ Users & Roles                           Multi-campus
+ Reports                                 Advanced Integrations
+ Dashboard
+
+8.5 Chapter Summary
+The scope defines the boundaries of the project and ensures that the development team focuses on the most important features for the initial release.
+
+Chapter 9
+Product Goals
+9.1 Introduction
+Product goals describe what the project intends to achieve.
+
+9.2 Business Goals
+The system aims to:
+    • Reduce manual inventory work. 
+    • Improve inventory accuracy. 
+    • Improve transparency. 
+    • Reduce reporting time. 
+    • Improve accountability. 
+
+9.3 User Goals
+Users should be able to:
+    • Easily manage inventory. 
+    • Quickly find stock information. 
+    • Record transactions. 
+    • Generate reports. 
+    • Access only the information relevant to their roles. 
+
+9.4 Technical Goals
+The project aims to:
+    • Build a maintainable system. 
+    • Use a modern technology stack. 
+    • Apply secure authentication. 
+    • Use Git and GitHub. 
+    • Use Docker. 
+    • Deploy the application. 
+    • Follow software engineering best practices. 
+
+9.5 SMART Goals
+An example goal is:
+Develop and deploy a functional Version 1 ASTU Stock Management System within the internship period, covering core inventory management, authentication, reporting, testing, and deployment requirements.
+
+9.6 Chapter Summary
+Product goals provide measurable direction for the development team and help determine whether the project is achieving its intended purpose.
+
+Chapter 10
+Functional Feature List
+10.1 Introduction
+This chapter provides a high-level list of features that the system is expected to provide.
+Detailed requirements will be created later during the SRS phase.
+
+10.2 Authentication
+    • Login. 
+    • Logout. 
+    • Password management. 
+    • User roles. 
+    • Access control. 
+
+10.3 Dashboard
+The dashboard may display:
+    • Total inventory items. 
+    • Available stock. 
+    • Low-stock items. 
+    • Recent transactions. 
+    • Summary information. 
+
+10.4 Inventory Management
+Users with appropriate permissions can:
+    • Add inventory items. 
+    • Edit items. 
+    • View items. 
+    • Delete items. 
+    • Search items. 
+    • Filter items. 
+    • Categorize items. 
+
+10.5 Stock Receiving
+The system should allow authorized users to record:
+    • Item. 
+    • Quantity. 
+    • Supplier. 
+    • Date. 
+    • Receiver. 
+    • Reference information. 
+
+10.6 Stock Issuing
+The system should record:
+    • Item issued. 
+    • Quantity. 
+    • Requesting department. 
+    • Recipient. 
+    • Date. 
+    • Issuing employee. 
+
+10.7 Supplier Management
+The system may allow authorized users to:
+    • Add suppliers. 
+    • Edit suppliers. 
+    • View suppliers. 
+    • Search suppliers. 
+
+10.8 Reports
+The system should support reports such as:
+    • Current stock. 
+    • Stock received. 
+    • Stock issued. 
+    • Stock movement. 
+    • Low-stock report. 
+
+10.9 User Management
+Administrators should be able to:
+    • Add users. 
+    • Edit users. 
+    • Disable users. 
+    • Assign roles. 
+    • Manage permissions. 
+
+10.10 Chapter Summary
+This chapter defines the initial high-level features. These features will later be transformed into detailed functional requirements and user stories.
+
+Chapter 11
+Non-Functional Requirements
+11.1 Introduction
+Functional requirements describe what the system does.
+Non-functional requirements describe how well the system should perform.
+
+11.2 Security
+The system should:
+    • Authenticate users. 
+    • Authorize access based on roles. 
+    • Protect passwords. 
+    • Protect sensitive information. 
+    • Prevent unauthorized access. 
+
+11.3 Performance
+The system should respond quickly to normal user operations.
+Examples:
+    • Pages should load within an acceptable time. 
+    • Searches should return results efficiently. 
+    • API requests should be optimized. 
+Exact performance targets will be defined later.
+
+11.4 Usability
+The system should:
+    • Be easy to learn. 
+    • Have clear navigation. 
+    • Provide understandable messages. 
+    • Use consistent UI elements. 
+
+11.5 Reliability
+The system should:
+    • Handle errors properly. 
+    • Prevent data corruption. 
+    • Maintain consistent inventory information. 
+
+11.6 Scalability
+The system should be designed so that additional users, departments, inventory items, and features can be supported in the future.
+
+11.7 Maintainability
+The software should use:
+    • Organized code. 
+    • Clear naming. 
+    • Modular architecture. 
+    • Documentation. 
+    • Version control. 
+
+11.8 Availability
+The system should be available to authorized users when required, subject to the hosting and infrastructure environment.
+
+11.9 Chapter Summary
+Non-functional requirements establish quality expectations for security, performance, usability, reliability, scalability, maintainability, and availability.
+
+Chapter 12
+Minimum Viable Product (MVP)
+12.1 Introduction
+An MVP (Minimum Viable Product) is the smallest useful version of a product that can solve the main user problem.
+The purpose is to avoid building too many features before validating the core system.
+
+12.2 MVP Features
+The first version should prioritize:
+    1. Authentication. 
+    2. User roles. 
+    3. Dashboard. 
+    4. Inventory management. 
+    5. Categories. 
+    6. Stock receiving. 
+    7. Stock issuing. 
+    8. Supplier management. 
+    9. Basic reports. 
+    10. Search and filtering. 
+
+12.3 Version 2 Features
+Possible Version 2 features:
+    • Barcode/QR scanning. 
+    • Notifications. 
+    • Advanced reports. 
+    • Audit logs. 
+    • Export to Excel/PDF. 
+    • Improved analytics. 
+
+12.4 Future Features
+Possible long-term features:
+    • Mobile application. 
+    • AI inventory forecasting. 
+    • Multi-campus support. 
+    • Advanced analytics. 
+    • Integration with university systems. 
+
+12.5 Chapter Summary
+The MVP focuses development on the most important features required to make the system useful while leaving advanced features for later versions.
+
+Chapter 13
+Product Roadmap
+13.1 Introduction
+The product roadmap describes the planned evolution of the system.
+
+13.2 Version 1.0 – Core System
+Main focus:
+    • Authentication. 
+    • Inventory. 
+    • Stock receiving. 
+    • Stock issuing. 
+    • Suppliers. 
+    • Dashboard. 
+    • Basic reports. 
+
+13.3 Version 1.1 – Improvements
+Possible improvements:
+    • Better reports. 
+    • Export functionality. 
+    • Notifications. 
+    • Audit history. 
+    • UI improvements. 
+
+13.4 Version 2.0 – Advanced Inventory
+Possible features:
+    • Barcode/QR support. 
+    • Advanced analytics. 
+    • Automated alerts. 
+    • Improved reporting. 
+
+13.5 Version 3.0 – Intelligent System
+Possible features:
+    • AI-assisted forecasting. 
+    • Inventory recommendations. 
+    • Advanced analytics. 
+    • Integration with other university systems. 
+
+13.6 Roadmap
+Version 1.0
+Core Inventory
+     ↓
+Version 1.1
+Improvements
+     ↓
+Version 2.0
+Advanced Inventory
+     ↓
+Version 3.0
+Intelligent & Integrated System
+
+13.7 Chapter Summary
+The roadmap provides a long-term direction while allowing the team to focus on the MVP first.
+
+Chapter 14
+Risk Analysis
+14.1 Introduction
+Risk analysis identifies events that could negatively affect the project and prepares strategies for reducing their impact.
+
+14.2 Risk Register
+Risk
+Probability
+Impact
+Mitigation
+Requirement changes
+Medium
+High
+Review requirements regularly
+Development delay
+Medium
+High
+Use Agile sprint planning
+Technical problems
+Medium
+Medium
+Research and prototype early
+Team communication problems
+Medium
+High
+Regular meetings
+Data loss
+Low
+High
+Regular backups
+Security vulnerabilities
+Medium
+High
+Secure coding and testing
+Internet problems
+Medium
+Medium
+Maintain local development environment
+Limited experience
+High
+Medium
+Training, documentation, mentorship
+
+14.3 Risk Management Process
+The team will:
+    1. Identify risks. 
+    2. Analyze risks. 
+    3. Prioritize risks. 
+    4. Plan mitigation. 
+    5. Monitor risks. 
+
+14.4 Chapter Summary
+Risk management helps the team prepare for problems before they become serious threats to the project.
+
+Chapter 15
+Technology Decisions
+15.1 Introduction
+Technology selection determines which tools and technologies will be used to build, test, deploy, and maintain the system.
+
+15.2 Proposed Technology Stack
+Area
+Technology
+Frontend
+React
+Backend
+Node.js + Express
+Database
+MongoDB
+API
+REST API
+Authentication
+JWT
+Version Control
+Git
+Repository
+GitHub
+UI/UX
+Figma
+UML/Architecture
+Draw.io
+API Testing
+Postman/Thunder Client
+Containerization
+Docker
+Deployment
+Cloud hosting
+Database Hosting
+MongoDB Atlas
+
+15.3 Why MERN?
+The MERN stack consists of:
+MongoDB
+    ↓
+Express.js
+    ↓
+React
+    ↓
+Node.js
+It allows JavaScript to be used across much of the application stack and is appropriate for learning modern full-stack web development.
+
+15.4 Technology Selection Principles
+Technology decisions should consider:
+    • Project requirements. 
+    • Team skills. 
+    • Maintainability. 
+    • Security. 
+    • Scalability. 
+    • Community support. 
+    • Deployment requirements. 
+
+15.5 Chapter Summary
+The selected technology stack provides a modern foundation for developing, testing, containerizing, and deploying the system.
+
+Chapter 16
+Agile Planning
+16.1 Introduction
+Agile is an iterative approach to software development where the product is developed in small increments and improved continuously based on feedback.
+
+16.2 Agile Approach
+The project will use short development cycles called Sprints.
+A typical sprint will involve:
+Sprint Planning
+      ↓
+Development
+      ↓
+Testing
+      ↓
+Review
+      ↓
+Retrospective
+      ↓
+Next Sprint
+
+16.3 Product Backlog
+The Product Backlog will contain all planned work.
+Examples:
+    • User authentication. 
+    • Inventory CRUD. 
+    • Stock receiving. 
+    • Stock issuing. 
+    • Supplier management. 
+    • Reports. 
+    • User management. 
+
+16.4 Sprint Backlog
+The Sprint Backlog contains the items selected for a particular sprint.
+For example:
+Sprint Goal: Build inventory management.
+Tasks:
+    • Create inventory model. 
+    • Create inventory API. 
+    • Create inventory UI. 
+    • Add validation. 
+    • Test CRUD operations. 
+
+16.5 Agile Roles
+For a professional team, common roles include:
+    • Product Owner. 
+    • Scrum Master. 
+    • Developers. 
+    • UI/UX Designer. 
+    • QA/Testers. 
+In your personal project, you may perform several of these roles yourself.
+
+16.6 Chapter Summary
+Agile allows the project to develop incrementally, receive feedback regularly, and adapt to changing requirements.
+
+Chapter 17
+Success Metrics
+17.1 Introduction
+Success metrics are measurements used to determine whether the product has achieved its goals.
+
+17.2 Functional Success
+The system should successfully support:
+    • Inventory management. 
+    • Receiving. 
+    • Issuing. 
+    • User management. 
+    • Reporting. 
+
+17.3 User Success
+Possible measurements include:
+    • Users can complete common tasks successfully. 
+    • Users can find inventory information quickly. 
+    • Users understand the interface. 
+    • Users require minimal training. 
+
+17.4 Technical Success
+Possible technical measurements include:
+    • Successful deployment. 
+    • API reliability. 
+    • Low critical bug count. 
+    • Secure authentication. 
+    • Successful Docker deployment. 
+    • Maintainable codebase. 
+
+17.5 Project Success
+The project should:
+    • Meet agreed requirements. 
+    • Be completed within the available time. 
+    • Be successfully tested. 
+    • Be deployed. 
+    • Have proper documentation. 
+
+17.6 Chapter Summary
+Success metrics provide objective ways to evaluate the quality and effectiveness of the project.
+
+Chapter 18
+Development Standards
+18.1 Introduction
+Development standards establish consistent practices that help developers produce maintainable and understandable software.
+
+18.2 Naming Convention
+Examples:
+React components:
+Navbar.jsx
+Dashboard.jsx
+InventoryList.jsx
+Functions:
+getInventory()
+createItem()
+deleteItem()
+Variables:
+inventoryItems
+currentUser
+stockQuantity
+
+18.3 Git Commit Convention
+We will use meaningful commits.
+Examples:
+feat: add inventory API
+fix: correct stock calculation
+docs: update project requirements
+test: add inventory API tests
+refactor: improve authentication service
+
+18.4 Branch Naming
+Examples:
+main
+develop
+feature/authentication
+feature/inventory
+feature/reports
+fix/login-error
+
+18.5 Code Quality
+Developers should:
+    • Avoid unnecessary duplication. 
+    • Use meaningful names. 
+    • Keep functions focused. 
+    • Validate input. 
+    • Handle errors properly. 
+    • Write documentation where necessary. 
+
+18.6 GitHub Practices
+The project should use:
+    • Issues. 
+    • Branches. 
+    • Pull Requests. 
+    • Code Reviews. 
+    • Project Boards. 
+    • Releases. 
+
+18.7 Chapter Summary
+Development standards ensure that the project remains organized, consistent, understandable, and maintainable.
+
+Chapter 19
+Meeting Notes
+19.1 Introduction
+Meeting notes record important project discussions, decisions, and action items.
+This is especially important in Agile development because project decisions can change over time.
+
+19.2 Meeting Template
+Meeting Date: __________________
+Participants: __________________
+Meeting Type: __________________
+Agenda:
+    1. 
+    2. 
+    3. 
+Discussion:
+
+Decisions Made:
+
+Action Items:
+Task
+Responsible Person
+Deadline
+Status
+
+
+
+
+
+19.3 Why Meeting Notes Matter
+Meeting notes help the team:
+    • Remember decisions. 
+    • Track responsibilities. 
+    • Avoid misunderstandings. 
+    • Monitor progress. 
+    • Maintain project history. 
+
+19.4 Chapter Summary
+Meeting documentation provides a historical record of project decisions and helps maintain communication between project participants.
+
+Chapter 20
+Sprint 0 Review
+20.1 Introduction
+The Sprint 0 review confirms that the product planning activities have been completed before moving to Sprint 1 – Requirement Analysis.
+
+20.2 Sprint 0 Deliverables
+Deliverable
+Status
+Introduction
+☐
+Product Vision
+☐
+Project Charter
+☐
+Stakeholder Analysis
+☐
+User Research
+☐
+Competitor Analysis
+☐
+SWOT Analysis
+☐
+Product Scope
+☐
+Product Goals
+☐
+Feature List
+☐
+Non-Functional Goals
+☐
+MVP
+☐
+Product Roadmap
+☐
+Risk Register
+☐
+Technology Decisions
+☐
+Agile Plan
+☐
+Success Metrics
+☐
+Development Standards
+☐
+Meeting Notes
+☐
+
+20.3 Sprint 0 Completion Criteria
+Sprint 0 can be considered complete when:
+    • The product purpose is clear. 
+    • The target users are identified. 
+    • The main problem is understood. 
+    • The project scope is defined. 
+    • MVP features are identified. 
+    • Initial risks are identified. 
+    • Technology choices are documented. 
+    • Agile development approach is defined. 
+
+20.4 Lessons Learned
+At the end of Sprint 0, the developer should understand:
+    • Why product planning is necessary. 
+    • How to identify stakeholders. 
+    • How to research users. 
+    • How to define product scope. 
+    • How to prioritize an MVP. 
+    • How Agile will be used. 
+    • Why technology decisions should be documented. 
+
+20.5 Next Phase
+After completing Sprint 0, the project moves to:
+Sprint 1 – Requirement Analysis
+The next phase will transform our product-planning information into detailed software requirements.
+We will create the Software Requirements Specification (SRS) containing:
+    • Introduction 
+    • Overall Description 
+    • Functional Requirements 
+    • Non-Functional Requirements 
+    • User Stories 
+    • Use Cases 
+    • Use Case Diagrams 
+    • Business Rules 
+    • Data Requirements 
+    • External Interface Requirements 
+    • Acceptance Criteria 
+    • Product Backlog 
+    • Requirement Traceability 
+
+Sprint 0 Complete
+Our overall journey now looks like this:
+                    ASTU STOCK MANAGEMENT SYSTEM
+
+                         SPRINT 0
+                     PRODUCT PLANNING
+                            │
+                            ▼
+                ┌──────────────────────┐
+                │ 1. Introduction     │
+                │ 2. Product Vision   │
+                │ 3. Project Charter  │
+                │ 4. Stakeholders     │
+                │ 5. User Research    │
+                │ 6. Competitors      │
+                │ 7. SWOT             │
+                │ 8. Scope            │
+                │ 9. Goals            │
+                │ 10. Features        │
+                │ 11. NFR Goals       │
+                │ 12. MVP             │
+                │ 13. Roadmap         │
+                │ 14. Risks           │
+                │ 15. Technology      │
+                │ 16. Agile           │
+                │ 17. Metrics         │
+                │ 18. Standards       │
+                │ 19. Meetings        │
+                │ 20. Review          │
+                └──────────────────────┘
+                            │
+                            ▼
+                 SPRINT 1 – REQUIREMENTS
+                            │
+                            ▼
+                      SPRINT 2 – UI/UX
+                            │
+                            ▼
+                   SPRINT 3 – SAD
+                            │
+                            ▼
+                    DEVELOPMENT
+                            │
+                            ▼
+                       TESTING
+                            │
+                            ▼
+                      DOCKER
+                            │
+                            ▼
+                     DEPLOYMENT
+                            │
+                            ▼
+                     MAINTENANCE
+
