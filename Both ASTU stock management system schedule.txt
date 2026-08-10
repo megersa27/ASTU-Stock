@@ -164,6 +164,15 @@ Day 10
 Developer Handoff
 Complete technical specification
 
+Sprint 4 — Environment Setup
+
+Day 1 → Development tools & environment check
+Day 2 → Node.js + npm + project initialization
+Day 3 → Frontend environment — React + Vite
+Day 4 → Backend environment — Node + Express
+Day 5 → MongoDB + database connection
+Day 6 → Environment variables + security
+Day 7 → Full environment test & project baseline
 
 📚 Stock Management Manual (Summary)
 Purpose of the Manual

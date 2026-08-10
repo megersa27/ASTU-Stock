@@ -1,0 +1,403 @@
+🚀 Sprint 4 — Environment Setup
+Sprint 4 Goal
+
+By the end of this sprint, your computer should be ready to build the real ASTU Stock Management System.
+
+We'll prepare:
+
+Your PC
+  │
+  ├── Git / GitHub
+  ├── VS Code / Kiro
+  ├── Node.js + npm
+  ├── React + Vite
+  ├── Node + Express
+  ├── MongoDB
+  ├── Environment variables
+  └── Project structure
+
+And importantly, we won't start building features yet.
+
+We'll first make sure everything works.
+
+🗺️ Sprint 4 Roadmap
+
+We'll divide it into days:
+
+Sprint 4 — Environment Setup
+
+Day 1 → Development tools & environment check
+Day 2 → Node.js + npm + project initialization
+Day 3 → Frontend environment — React + Vite
+Day 4 → Backend environment — Node + Express
+Day 5 → MongoDB + database connection
+Day 6 → Environment variables + security
+Day 7 → Full environment test & project baseline
+
+The order matters because each day builds on the previous one.
+
+🚀 Sprint 4 — Day 1
+Development Environment Check
+
+Today is not about installing everything blindly.
+
+You already have a development environment, so we'll first inspect what is already installed.
+
+Your goal today is:
+
+Know exactly what tools your computer already has before changing anything.
+
+1. Our development stack
+
+For the project, we're going to use:
+
+Frontend
+   ↓
+React + Vite
+
+Backend
+   ↓
+Node.js + Express
+
+Database
+   ↓
+MongoDB
+
+Version Control
+   ↓
+Git + GitHub
+
+Development Assistant
+   ↓
+Kiro
+
+Later:
+
+Authentication
+   ↓
+JWT + password hashing
+
+Deployment
+   ↓
+Cloud services
+
+But don't install those later tools today.
+
+2. Check your operating system
+
+You're working on Ubuntu.
+
+Run:
+
+lsb_release -a
+
+You should see information about your Ubuntu version.
+
+Also run:
+
+uname -a
+
+This isn't something you need to memorize.
+
+We're simply confirming your development environment.
+
+3. Check Git
+
+Run:
+
+git --version
+
+You should get something similar to:
+
+git version 2.x.x
+
+You already used Git extensively during your collaboration practice, so this should work.
+
+Then:
+
+git config --global user.name
+
+and:
+
+git config --global user.email
+
+You should see your Git identity.
+
+Why check this?
+
+Because later when you commit:
+
+git commit -m "feat: add product form"
+
+Git needs to know who created that commit.
+
+4. Check Node.js
+
+Run:
+
+node --version
+
+Then:
+
+npm --version
+
+You might see something like:
+
+v22.x.x
+10.x.x
+
+The exact version isn't important for today's exercise.
+
+What matters is:
+
+node → works
+npm  → works
+5. Understand Node vs npm
+
+Don't just run commands without understanding them.
+
+Node.js
+
+Node.js allows JavaScript to run outside the browser.
+
+Normally:
+
+JavaScript
+   ↓
+Browser
+
+With Node:
+
+JavaScript
+   ↓
+Your computer/server
+
+That's why we can eventually build:
+
+Node.js
+   ↓
+Express
+   ↓
+Backend API
+npm
+
+npm is the package manager we'll use to install libraries.
+
+For example:
+
+npm install express
+
+means:
+
+Download Express and make it available to this project.
+
+Later you'll see:
+
+package.json
+package-lock.json
+node_modules/
+
+We'll learn exactly what each one means.
+
+6. Check your frontend tools
+
+You don't necessarily need a globally installed React.
+
+That's an important point.
+
+We'll create the React project using Vite.
+
+Eventually:
+
+npm create vite@latest
+
+will create your frontend project.
+
+You'll get something similar to:
+
+frontend/
+├── src/
+├── public/
+├── package.json
+├── vite.config.js
+└── index.html
+
+Don't create it yet.
+
+That's Day 3.
+
+7. Check Kiro
+
+Since you're planning to use Kiro during development, make sure it opens correctly.
+
+You can check from your environment according to how you installed it.
+
+If the Kiro terminal works, that's enough for today.
+
+Remember our rule:
+
+Kiro will be your development assistant, not your replacement.
+
+You'll understand the architecture and code first, then use Kiro to accelerate implementation.
+
+8. Check MongoDB
+
+Today we don't need to connect MongoDB.
+
+We're only checking whether you already have the MongoDB tools available.
+
+Try:
+
+mongosh --version
+
+If you get:
+
+command not found
+
+Don't panic.
+
+That simply means the MongoDB Shell isn't installed or isn't available in your PATH.
+
+We're going to deal with MongoDB properly on Day 5.
+
+9. Your development environment checklist
+
+Create:
+
+Sprint 4 - Environment Setup/
+└── Day 1/
+    └── environment-check.txt
+
+Put something like:
+
+ASTU Stock Management System
+Sprint 4 - Day 1
+
+Operating System:
+Ubuntu __________
+
+Git:
+Version __________
+Status: Working / Not Working
+
+Node.js:
+Version __________
+Status: Working / Not Working
+
+npm:
+Version __________
+Status: Working / Not Working
+
+Kiro:
+Status: Working / Not Working
+
+MongoDB Shell:
+Version __________
+Status: Working / Not Installed
+
+Don't copy my version numbers.
+
+Get your actual values from your computer.
+
+🧪 Day 1 Practical Task
+
+Open your terminal and run these one at a time:
+
+lsb_release -a
+git --version
+node --version
+npm --version
+mongosh --version
+
+Then check Kiro manually.
+
+🧠 Important: Don't install anything yet
+
+This is deliberate.
+
+You might discover:
+
+Git       ✅
+Node      ✅
+npm       ✅
+Kiro      ✅
+MongoDB   ❌
+
+That's okay.
+
+We're going to install/configure missing components at the appropriate point in the sprint, rather than randomly installing everything.
+
+This will also teach you an important professional habit:
+
+Before changing a development environment, inspect it first.
+
+🎯 Day 1 Challenge
+
+After checking everything, answer these in your own words:
+
+1.
+
+What is Node.js?
+
+2.
+
+What is npm?
+
+3.
+
+Why do we need Git?
+
+4.
+
+Why are we using React?
+
+5.
+
+Why do we need Express?
+
+6.
+
+Why do we need MongoDB?
+
+7.
+
+What's the role of Kiro in this project?
+
+8.
+
+Why shouldn't we install everything before checking what's already installed?
+
+🔗 How this connects to Sprint 3
+
+You already learned:
+
+                 SPRINT 3
+                    │
+                    ▼
+              Architecture
+                    │
+        ┌───────────┼───────────┐
+        ▼           ▼           ▼
+     Frontend    Backend     Database
+        │           │           │
+      React      Node/Express  MongoDB
+
+Now Sprint 4 says:
+
+"Okay. We know what we're going to build. Let's prepare the computer that will build it."
+
+Then:
+
+Sprint 4
+Environment Setup
+       ↓
+Sprint 5
+Frontend Development
+       ↓
+Sprint 6
+Backend Development
+       ↓
+Sprint 7
+Database + Integration
+       ↓
+...
