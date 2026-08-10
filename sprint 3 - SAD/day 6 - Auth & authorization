@@ -1,0 +1,623 @@
+Sprint 3 — Day 6
+Authentication & Authorization
+
+Great. Yesterday we designed how ASTU Stock stores its data.
+
+Today we answer a different question:
+
+Who is allowed to enter the system, and what is each person allowed to do?
+
+This is one of the most important parts of your system because ASTU Stock will have different users such as Admin, Manager, and Storekeeper.
+
+🎯 Today's Goals
+
+By the end of Day 6, you should understand:
+
+Authentication vs Authorization
+Login flow
+Registration
+Password security
+Sessions/tokens
+JWT at a conceptual level
+Roles
+Permissions
+Protected routes
+How authentication connects Frontend → Backend → Database
+
+No implementation today.
+
+We're designing the security flow first.
+
+1. Authentication vs Authorization
+
+These two words are easy to confuse.
+
+Authentication
+
+"Who are you?"
+
+For example:
+
+Email: manager@gmail.com
+Password: ********
+
+The system checks:
+
+Is this really the manager?
+
+If yes:
+
+✅ Authentication successful
+Authorization
+
+"What are you allowed to do?"
+
+Suppose the user is authenticated as:
+
+Manager
+
+The system asks:
+
+Can this person delete users?
+
+Maybe:
+
+❌ No
+
+But:
+
+Can this person view stock?
+
+✅ Yes
+
+So remember:
+
+Authentication
+     ↓
+Who are you?
+
+Authorization
+     ↓
+What can you do?
+2. Real-world example
+
+Imagine ASTU Stock has three employees:
+
+👑 Admin
+👨‍💼 Manager
+📦 Storekeeper
+
+They all have accounts.
+
+They can all potentially log in.
+
+But they don't necessarily have the same permissions.
+
+For example:
+
+Action	Admin	Manager	Storekeeper
+View products	✅	✅	✅
+Add products	✅	✅	✅
+Edit products	✅	✅	✅
+Delete products	✅	Maybe	❌
+Manage users	✅	❌	❌
+View reports	✅	✅	Maybe
+Manage suppliers	✅	✅	✅
+
+Important: This is an example for practice. Your actual permissions should ultimately come from your SRS/business requirements.
+
+3. Login flow
+
+Let's connect this to the login page you designed in Figma.
+
+The user sees:
+
+┌─────────────────────────────┐
+│      ASTU STOCK             │
+│                             │
+│ Email                       │
+│ [_______________________]   │
+│                             │
+│ Password                    │
+│ [_______________________]   │
+│                             │
+│       [ LOGIN ]             │
+└─────────────────────────────┘
+
+The user enters:
+
+Email: manager@gmail.com
+Password: ********
+
+and clicks:
+
+[ LOGIN ]
+4. What happens behind the screen?
+
+This is where your previous lessons connect.
+
+User
+ ↓
+Login Form
+ ↓
+React Frontend
+ ↓
+POST /api/auth/login
+ ↓
+Express Backend
+ ↓
+Database
+
+The backend finds the user and checks the credentials.
+
+If they're correct:
+
+Database
+   ↓
+User exists
+   ↓
+Password correct
+   ↓
+Authentication successful
+
+Then the backend sends an authentication result back to the frontend.
+
+5. Why can't we simply send the password around?
+
+Suppose the database contained:
+
+email: manager@gmail.com
+password: 123456
+
+That would be terrible security.
+
+If someone gets access to the database, they immediately know the password.
+
+Instead, passwords should be hashed before being stored.
+
+Conceptually:
+
+User enters:
+
+123456
+   ↓
+Password hashing
+   ↓
+$2b$10$................
+   ↓
+Database
+
+The database stores the hash rather than the original password.
+
+So:
+
+❌ Store plain password
+
+✅ Store password hash
+
+You don't need to implement hashing today.
+
+Just understand why it exists.
+
+6. What happens during login?
+
+Imagine the database contains:
+
+email:
+manager@gmail.com
+
+password:
+[hashed password]
+
+The user enters:
+
+manager@gmail.com
+123456
+
+The backend:
+
+1. Find user by email
+          ↓
+2. Get stored password hash
+          ↓
+3. Compare entered password
+          ↓
+4. If correct → continue
+          ↓
+5. Create authentication result
+
+If incorrect:
+
+❌ Invalid credentials
+7. JWT — understand the concept
+
+You will probably encounter JWT (JSON Web Token) when implementing authentication.
+
+Don't worry about the technical details yet.
+
+Think of it as an authentication credential that the application can use after successful login.
+
+Conceptually:
+
+Login
+ ↓
+Backend verifies user
+ ↓
+Backend creates token
+ ↓
+Frontend receives token
+ ↓
+Frontend uses authentication information
+    when accessing protected resources
+
+So the flow might look like:
+
+POST /api/auth/login
+        ↓
+       API
+        ↓
+   Verify user
+        ↓
+   Create JWT
+        ↓
+    Response
+        ↓
+   Frontend
+
+The token is not the user's password.
+
+8. Protected routes
+
+Now imagine the user has logged in.
+
+They try to access:
+
+/api/products
+
+The backend can check whether the request is authenticated.
+
+Conceptually:
+
+Request
+   ↓
+Authentication check
+   ↓
+Is user authenticated?
+   │
+   ├── NO → ❌ 401 Unauthorized
+   │
+   └── YES
+         ↓
+       Continue
+
+So some API endpoints are protected.
+
+For example:
+
+GET /api/products
+
+might require login.
+
+9. Authorization comes after authentication
+
+This is very important.
+
+Suppose:
+
+Storekeeper
+
+is already logged in.
+
+So:
+
+Authentication
+      ↓
+     ✅
+
+But they try:
+
+DELETE /api/users/5
+
+The backend asks:
+
+Does this user have permission to delete users?
+
+Maybe:
+
+Storekeeper
+   ↓
+Delete users?
+   ↓
+❌ NO
+
+So the request is denied.
+
+That's authorization.
+
+🔥 10. Authentication + Authorization together
+
+The complete flow becomes:
+
+                 LOGIN
+                   │
+                   ▼
+             Authentication
+                   │
+                   │
+            "Who are you?"
+                   │
+                   ▼
+                User
+                   │
+                   ▼
+              Role check
+                   │
+                   ▼
+           "What can you do?"
+                   │
+          ┌────────┴────────┐
+          ▼                 ▼
+       Allowed            Denied
+          │                 │
+          ▼                 ▼
+      Continue              ❌
+11. Role-Based Access Control
+
+You'll often hear:
+
+RBAC — Role-Based Access Control
+
+It means permissions can be associated with roles.
+
+For example:
+
+Admin
+ ├── manage users
+ ├── manage products
+ ├── manage suppliers
+ └── view reports
+
+Manager
+ ├── manage products
+ ├── manage suppliers
+ └── view reports
+
+Storekeeper
+ ├── view products
+ ├── record purchases
+ └── record sales
+
+Then instead of checking every person's name:
+
+Is Megersa allowed?
+
+we can reason:
+
+What role does Megersa have?
+        ↓
+    Storekeeper
+        ↓
+What permissions does Storekeeper have?
+12. Connect it to your database design
+
+Yesterday you designed:
+
+USER
+──────────────
+id
+name
+email
+password
+role
+createdAt
+
+Today you can see why role matters.
+
+For example:
+
+{
+  "name": "Abebe",
+  "email": "abebe@example.com",
+  "password": "hashed-password",
+  "role": "storekeeper"
+}
+
+Another:
+
+{
+  "name": "Kebede",
+  "email": "kebede@example.com",
+  "password": "hashed-password",
+  "role": "admin"
+}
+
+The backend can use that role when making authorization decisions.
+
+13. Full ASTU Stock login flow
+
+Let's put everything together.
+
+                    USER
+                      │
+                      ▼
+                Login Form
+                      │
+                      ▼
+                React Frontend
+                      │
+                      │ POST /api/auth/login
+                      ▼
+                Express Backend
+                      │
+                      ▼
+                 Find User
+                      │
+                      ▼
+              Verify Password
+                      │
+                ┌─────┴─────┐
+                │           │
+             Wrong        Correct
+                │           │
+                ▼           ▼
+               ❌       Create Token
+                            │
+                            ▼
+                         Frontend
+                            │
+                            ▼
+                       Dashboard
+
+Then when the user accesses protected functionality:
+
+Frontend
+   │
+   │ authenticated request
+   ▼
+Backend
+   │
+   ├── Authentication?
+   │       ↓
+   │      YES
+   │
+   ├── Authorization?
+   │       ↓
+   │    Allowed?
+   │       │
+   │       ├── YES → Continue
+   │       └── NO → ❌ Denied
+   │
+   ▼
+Database
+🧠 14. Don't confuse these three things
+Password
+
+Secret information the user knows.
+
+********
+Password hash
+
+A protected representation stored in the database.
+
+$2b$10$...
+JWT/token
+
+Authentication information used to establish that the user has successfully authenticated.
+
+eyJhbGciOi...
+
+For now, you only need to understand their purpose, not memorize their structure.
+
+✍️ Day 6 Practice
+
+Create:
+
+Sprint 3 - SAD/
+└── Day 6/
+    ├── Authentication Flow
+    ├── Authorization Flow
+    └── Role Permission Matrix
+Task 1 — Draw login flow
+
+Draw this yourself:
+
+User
+ ↓
+Login Form
+ ↓
+React
+ ↓
+POST /api/auth/login
+ ↓
+Backend
+ ↓
+Database
+ ↓
+Verify credentials
+ ↓
+Authentication result
+ ↓
+Dashboard
+
+But don't simply copy it.
+
+Draw it from memory after reading the lesson.
+
+Task 2 — Create your own role matrix
+
+Start with:
+
+Permission	Admin	Manager	Storekeeper
+Login			
+View products			
+Add product			
+Edit product			
+Delete product			
+Manage users			
+View reports			
+Manage suppliers			
+
+Fill it based on your SRS and your understanding of the actual business requirements.
+
+Don't worry if we revise it later.
+
+Task 3 — Think about unauthorized access
+
+Imagine:
+
+A Storekeeper logs in successfully and then tries to delete another user.
+
+Answer:
+
+1. Is the Storekeeper authenticated?
+2. Is the Storekeeper authorized to delete users?
+3. What should the backend do?
+4. Should the frontend show the delete button?
+5. Is hiding the button alone enough for security?
+
+That last question is especially important.
+
+🧪 Day 6 Challenge
+
+Explain this scenario in your own words:
+
+A Manager logs into ASTU Stock, opens the Products page, and tries to delete a product.
+
+Write the flow:
+
+1. Manager enters __________
+2. React sends ______________
+3. Backend checks ___________
+4. Database finds ___________
+5. Backend verifies __________
+6. Backend creates ___________
+7. Manager accesses __________
+8. Manager clicks ____________
+9. Backend checks ____________
+10. Backend allows/denies ______
+
+Try to complete it without looking at the lesson.
+
+🔗 Your Sprint 3 progression
+
+You can now see the architecture becoming much more complete:
+
+DAY 3
+System Architecture
+      ↓
+"How are the pieces connected?"
+
+DAY 4
+API Design
+      ↓
+"How do they communicate?"
+
+DAY 5
+Database Design
+      ↓
+"Where is the information stored?"
+
+DAY 6
+Authentication & Authorization
+      ↓
+"Who can enter and what can they do?"
