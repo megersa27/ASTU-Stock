@@ -1,15 +1,15 @@
-const mongoose = require("mongoose");
+import { PrismaClient } from "../generated/prisma/client.ts";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
 
-    console.log("MongoDB connected successfully");
-  } catch (error) {
-    console.error("MongoDB connection failed:");
-    console.error(error.message);
-    process.exit(1);
-  }
-};
+const adapter = new PrismaPg(pool);
 
-module.exports = connectDB;
+const prisma = new PrismaClient({
+  adapter,
+});
+
+export default prisma;
