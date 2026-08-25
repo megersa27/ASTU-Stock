@@ -1,0 +1,68 @@
+import { createContext, useEffect, useState } from "react";
+import {
+  login as loginService,
+  register as registerService,
+  getMe,
+  logout as logoutService,
+} from "../services/authService.js";
+
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const currentUser = await getMe();
+        setUser(currentUser);
+      } catch (error) {
+        localStorage.removeItem("token");
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAuthentication();
+  }, []);
+
+  const login = async (credentials) => {
+    const data = await loginService(credentials);
+    setUser(data.user);
+    return data;
+  };
+
+  const register = async (userData) => {
+    const data = await registerService(userData);
+    return data;
+  };
+
+  const logout = () => {
+    logoutService();
+    setUser(null);
+  };
+
+  const value = {
+    user,
+    loading,
+    login,
+    register,
+    logout,
+    isAuthenticated: !!user,
+  };
+
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import cors from "cors";
 import prisma from "./config/db.js";
 import authRoutes from "./routes/auth.js";
 import errorHandler from "./middleware/errorHandler.js";
@@ -7,6 +8,12 @@ import categoryRoutes from "./routes/categories.js";
 import productRoutes from "./routes/products.js";
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 const PORT = process.env.PORT || 5000;
 
