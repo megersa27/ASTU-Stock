@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: astu-stock-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: astu_stock_db
+      POSTGRES_USER: astu_stock_user
+      POSTGRES_PASSWORD: astu_stock
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U astu_stock_user -d astu_stock_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:

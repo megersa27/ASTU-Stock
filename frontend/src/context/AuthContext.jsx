@@ -5,6 +5,7 @@ import {
   getMe,
   logout as logoutService,
 } from "../services/authService.js";
+import { updateProfile as updateProfileService } from "../services/userService.js";
 
 export const AuthContext = createContext();
 
@@ -46,6 +47,19 @@ export const AuthProvider = ({ children }) => {
     return data;
   };
 
+  const refreshUser = async () => {
+    const currentUser = await getMe();
+    setUser(currentUser);
+    return currentUser;
+  };
+
+  const updateProfile = async (profileData) => {
+    const data = await updateProfileService(profileData);
+    const nextUser = data?.user || data?.data || { ...user, ...profileData };
+    setUser(nextUser);
+    return data;
+  };
+
   const logout = () => {
     logoutService();
     setUser(null);
@@ -57,6 +71,8 @@ export const AuthProvider = ({ children }) => {
     login,
     register,
     logout,
+    refreshUser,
+    updateProfile,
     isAuthenticated: !!user,
   };
 

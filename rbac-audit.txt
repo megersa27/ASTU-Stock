@@ -1,0 +1,16 @@
+auditLogs.js: roleAccess present
+auth.js: NO roleAccess
+categories.js: roleAccess present
+credits.js: NO roleAccess
+damaged.js: roleAccess present
+dashboard.js: roleAccess present
+expenses.js: roleAccess present
+inventory.js: roleAccess present
+products.js: roleAccess present
+reports.js: roleAccess present
+sales.js: roleAccess present
+stock.js: roleAccess present
+stockTaking.js: roleAccess present
+suppliers.js: roleAccess present
+users.js: roleAccess present
+warehouses.js: roleAccess present
